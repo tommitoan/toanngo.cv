@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #050816;
+  --panel: rgba(24, 18, 47, 0.88);
+  --panel-strong: rgba(17, 12, 35, 0.94);
+  --panel-soft: rgba(20, 14, 39, 0.76);
+  --line: rgba(145, 94, 255, 0.22);
+  --line-soft: rgba(255, 255, 255, 0.1);
+  --text: #f4f5ff;
+  --muted: #a9acc6;
+  --accent: #915eff;
+  --accent-2: #4e8cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Outfit", sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at top center, rgba(145, 94, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.96), rgba(5, 8, 22, 1));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -18vw;
+  left: -14vw;
+  width: 58vw;
+  height: 58vw;
+  background-image: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0 10px,
+    rgba(145, 94, 255, 0.22) 10px 12px
+  );
+  transform: rotate(18deg);
+  opacity: 0.24;
+  mask-image: linear-gradient(135deg, black 35%, transparent 85%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  right: -18vw;
+  top: 2vh;
+  width: 52vw;
+  height: 52vw;
+  background-image: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0 10px,
+    rgba(145, 94, 255, 0.22) 10px 12px
+  );
+  transform: rotate(-22deg);
+  opacity: 0.28;
+  mask-image: linear-gradient(225deg, black 38%, transparent 86%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(145, 94, 255, 0.34);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-[min(1180px,calc(100%-2rem))];
+  }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 80px rgba(2, 6, 23, 0.28);
+  }
+
+  .panel-strong {
+    background: var(--panel-strong);
+    border: 1px solid rgba(145, 94, 255, 0.3);
+    box-shadow:
+      0 24px 80px rgba(2, 6, 23, 0.38),
+      0 0 0 1px rgba(145, 94, 255, 0.12) inset;
+  }
+
+  .eyebrow {
+    @apply inline-flex text-xs font-medium uppercase tracking-[0.26em] text-slate-400;
+  }
+
+  .section-title {
+    @apply text-5xl font-extrabold leading-none text-white md:text-7xl;
+    letter-spacing: -0.05em;
+  }
+
+  .section-copy {
+    @apply mx-auto max-w-3xl text-base leading-7 text-slate-300 md:text-xl;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-200;
+  }
+
+  .brand-script {
+    @apply font-brand text-3xl tracking-tight text-slate-200;
+  }
+
+  .accent-text {
+    background: linear-gradient(135deg, var(--accent), #b07eff 45%, var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-button {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white transition;
+    background: linear-gradient(135deg, #7c3aed, #4f7cff);
+    box-shadow:
+      0 14px 28px rgba(79, 124, 255, 0.22),
+      0 10px 24px rgba(124, 58, 237, 0.24);
+  }
+
+  .gradient-button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+
+  .ghost-button {
+    @apply inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 text-sm font-medium text-slate-100 transition;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  }
+
+  .ghost-button:hover {
+    border-color: rgba(145, 94, 255, 0.4);
+    background: linear-gradient(180deg, rgba(145, 94, 255, 0.16), rgba(255, 255, 255, 0.04));
+  }
+
+  .skill-hex {
+    clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+    background:
+      linear-gradient(180deg, rgba(145, 94, 255, 0.32), rgba(71, 45, 127, 0.75)),
+      var(--panel-soft);
+    border: 1px solid rgba(145, 94, 255, 0.26);
+    box-shadow: 0 18px 40px rgba(3, 5, 18, 0.3);
+  }
+
+  .section-divider {
+    @apply absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/15 md:block;
+  }
+
+  .project-preview {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(86, 204, 242, 0.18), transparent 55%),
+      linear-gradient(180deg, rgba(10, 14, 28, 0.92), rgba(16, 12, 34, 0.92));
+    border: 1px solid rgba(145, 94, 255, 0.16);
+  }
+
+  .soft-caption {
+    @apply text-xs uppercase tracking-[0.26em] text-slate-500;
+  }
+
+  .wave-field {
+    position: absolute;
+    inset: auto;
+    border-radius: 9999px;
+    --wave-rotate: 0deg;
+    background-image: repeating-radial-gradient(
+      ellipse at center,
+      transparent 0 10px,
+      rgba(145, 94, 255, 0.17) 10px 12px
+    );
+    animation: drift 18s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.18));
+  }
+
+  .wave-field-left {
+    left: -16rem;
+    top: 5rem;
+    width: 34rem;
+    height: 34rem;
+    --wave-rotate: 14deg;
+    opacity: 0.2;
+    mask-image: linear-gradient(135deg, black 40%, transparent 84%);
+  }
+
+  .wave-field-right {
+    right: -14rem;
+    top: 3rem;
+    width: 42rem;
+    height: 42rem;
+    --wave-rotate: -18deg;
+    opacity: 0.3;
+    mask-image: linear-gradient(215deg, black 40%, transparent 88%);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(var(--wave-rotate));
+  }
+
+  to {
+    transform: translate3d(0, 16px, 0) rotate(calc(var(--wave-rotate) + 8deg));
+  }
+}
