@@ -2,7 +2,7 @@
 
 Lean personal portfolio SPA built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion.
 
-This project is the first implementation pass of a static one-page portfolio inspired by the structure and polish of modern engineer portfolios, while staying intentionally lightweight and easy to maintain.
+This project is a static one-page portfolio inspired by the structure and polish of modern engineer portfolios, with a premium split-screen hero and orbit-style motion layer while staying lightweight and easy to maintain.
 
 ## Project goals
 
@@ -33,13 +33,13 @@ This project is the first implementation pass of a static one-page portfolio ins
 - sticky top navigation with anchor links
 - responsive one-page layout
 - custom visual direction with dark ink background and accent lighting
-- light reveal animations
+- premium split-screen hero with orbit motion
+- richer section reveal animations
 - centralized content in one file
 - structured project documentation under `docs/`
 
 ## What is intentionally not included yet
 
-- 3D hero or `three.js`
 - project detail pages
 - CMS integration
 - contact form backend
@@ -155,7 +155,7 @@ Basic deployment flow:
 
 ## Status
 
-The initial lean SPA version has been scaffolded and verified with:
+The current premium orbit-hero version has been scaffolded and verified with:
 
 ```bash
 pnpm build
@@ -163,11 +163,10 @@ pnpm build
 
 ## Next iteration ideas
 
-- replace placeholder content with real biography and project data
-- add resume download link
+- replace the `TN` overview placeholder with a real portrait
+- replace the generated project preview blocks with real screenshots
 - refine spacing and copy after real content is added
-- improve hero art direction
-- add premium motion or interactive visual treatment
+- add deeper case-study detail if needed
 
 ## Notes
 
@@ -177,4 +176,3 @@ This project is meant to evolve in layers:
 2. add real content
 3. improve visual identity
 4. add higher-end interactions only where they actually help
-

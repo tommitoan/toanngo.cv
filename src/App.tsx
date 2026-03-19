@@ -11,6 +11,9 @@ function App() {
   return (
     <div className="min-h-screen bg-midnight text-slate-100">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="starfield starfield-far" />
+        <div className="starfield starfield-mid" />
+        <div className="starfield starfield-near" />
         <div className="wave-field wave-field-left" />
         <div className="wave-field wave-field-right" />
         <div className="absolute left-1/2 top-[-10rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-violet/10 blur-[140px]" />

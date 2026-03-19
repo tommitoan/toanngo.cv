@@ -53,19 +53,20 @@ export const portfolio = {
   hero: {
     eyebrow: "Software Engineer",
     lead: "Hi, I'm",
-    name: "Toan.",
+    name: "Toan Ngo",
+    handle: "@tommitoan",
     role: "Go Developer and DevOps Engineer building scalable backend systems and cloud-native products.",
     description:
-      "Based in Ho Chi Minh City, I have over 2 years of experience across Golang, RESTful APIs, AWS infrastructure, microservices architecture, and product-focused system design.",
+      "Based in Ho Chi Minh City, I have over 3 years of experience across Golang, RESTful APIs, AWS infrastructure, microservices architecture, and product-focused system design.",
     highlights: ["Go and gRPC", "AWS and Kubernetes", "API-first backend"],
     ctas: [
       { label: "View Projects", href: "#projects", variant: "primary" },
       { label: "Resume", href: "/ToanNgo-resume.pdf", variant: "secondary" }
     ] satisfies ActionLink[],
     metrics: [
-      { value: "2+", label: "Years building production software" },
-      { value: "AWS", label: "Solutions Architect Associate certified" },
-      { value: "6", label: "Featured backend, cloud, and platform projects" }
+      { value: "3+", label: "Years Experience" },
+      { value: "6+", label: "Projects Delivered" },
+      { value: "10+", label: "Core Technologies" }
     ]
   },
   about: {
