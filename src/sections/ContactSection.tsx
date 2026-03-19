@@ -3,7 +3,7 @@ import { portfolio } from "../content/portfolio";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="section-shell py-12 md:py-16">
+    <section id="contact" className="section-shell">
       <Reveal className="panel-strong rounded-[2rem] px-6 py-10 md:px-10 md:py-12">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">

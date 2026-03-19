@@ -4,7 +4,7 @@ import { portfolio } from "../content/portfolio";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="section-shell py-12 md:py-16">
+    <section id="projects" className="section-shell">
       <Reveal>
         <SectionHeading
           eyebrow="Innovative creations"

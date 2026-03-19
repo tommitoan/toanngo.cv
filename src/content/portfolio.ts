@@ -14,10 +14,15 @@ type Principle = {
   description: string;
 };
 
+export type SkillItem = {
+  name: string;
+  icon?: string;
+};
+
 type SkillGroup = {
   title: string;
   label: string;
-  items: string[];
+  items: SkillItem[];
 };
 
 type ExperienceItem = {
@@ -102,17 +107,35 @@ export const portfolio = {
     {
       title: "Backend and API",
       label: "<backend>",
-      items: ["Go", "gRPC", "REST APIs", "OpenAPI", "Clean Architecture"]
+      items: [
+        { name: "Go", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" },
+        { name: "gRPC", icon: "https://cdn.simpleicons.org/google/white" },
+        { name: "REST APIs", icon: "https://cdn.simpleicons.org/fastapi/white" },
+        { name: "OpenAPI", icon: "https://cdn.simpleicons.org/openapiinitiative/white" },
+        { name: "Clean Arch" }
+      ]
     },
     {
       title: "Cloud and DevOps",
       label: "<cloud>",
-      items: ["AWS", "Kubernetes", "Docker", "Argo CD", "GitHub Actions"]
+      items: [
+        { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+        { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
+        { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+        { name: "Argo CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg" },
+        { name: "Actions", icon: "https://cdn.simpleicons.org/githubactions/white" }
+      ]
     },
     {
       title: "Platform and Product",
       label: "<platform>",
-      items: ["PostgreSQL", "Redis", "OpenTelemetry", "React", "TypeScript"]
+      items: [
+        { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
+        { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" },
+        { name: "OpnTlmtry", icon: "https://cdn.simpleicons.org/opentelemetry/white" },
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" }
+      ]
     }
   ] satisfies SkillGroup[],
   experience: [

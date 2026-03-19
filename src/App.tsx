@@ -21,7 +21,7 @@ function App() {
 
       <SiteHeader items={portfolio.navigation} />
 
-      <main className="pb-16 pt-28 md:pt-32">
+      <main className="flex flex-col gap-16 pb-16 pt-20 md:gap-24 md:pt-22">
         <HeroSection />
         <AboutSection />
         <SkillsSection />

@@ -44,11 +44,9 @@ body::before {
   left: -14vw;
   width: 58vw;
   height: 58vw;
-  background-image: repeating-radial-gradient(
-    ellipse at center,
-    transparent 0 10px,
-    rgba(145, 94, 255, 0.22) 10px 12px
-  );
+  background-image: repeating-radial-gradient(ellipse at center,
+      transparent 0 10px,
+      rgba(145, 94, 255, 0.22) 10px 12px);
   transform: rotate(18deg);
   opacity: 0.24;
   mask-image: linear-gradient(135deg, black 35%, transparent 85%);
@@ -63,11 +61,9 @@ body::after {
   top: 2vh;
   width: 52vw;
   height: 52vw;
-  background-image: repeating-radial-gradient(
-    ellipse at center,
-    transparent 0 10px,
-    rgba(145, 94, 255, 0.22) 10px 12px
-  );
+  background-image: repeating-radial-gradient(ellipse at center,
+      transparent 0 10px,
+      rgba(145, 94, 255, 0.22) 10px 12px);
   transform: rotate(-22deg);
   opacity: 0.28;
   mask-image: linear-gradient(225deg, black 38%, transparent 86%);
@@ -94,7 +90,8 @@ button {
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-[min(1180px,calc(100%-2rem))];
+    @apply mx-auto scroll-mt-24 md:scroll-mt-32;
+    width: min(1180px, calc(100% - 2rem));
   }
 
   .panel {
@@ -162,13 +159,65 @@ button {
     background: linear-gradient(180deg, rgba(145, 94, 255, 0.16), rgba(255, 255, 255, 0.04));
   }
 
-  .skill-hex {
-    clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
-    background:
-      linear-gradient(180deg, rgba(145, 94, 255, 0.32), rgba(71, 45, 127, 0.75)),
-      var(--panel-soft);
-    border: 1px solid rgba(145, 94, 255, 0.26);
-    box-shadow: 0 18px 40px rgba(3, 5, 18, 0.3);
+  .honeycomb-grid {
+    @apply flex flex-col items-center justify-center pt-5 pb-5;
+  }
+
+  .honeycomb-row {
+    @apply flex justify-center;
+  }
+
+  .honeycomb-row .hexagon {
+    @apply relative flex justify-center items-center z-10 transition-all duration-300;
+    width: 130px;
+    height: 150px;
+    margin: -10px 7.5px;
+  }
+
+  .honeycomb-row .hexagon::before,
+  .honeycomb-row .hexagon::after {
+    @apply absolute w-full h-full top-0 left-0 transition-all duration-300;
+    content: '';
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+
+  .honeycomb-row .hexagon::before {
+    @apply z-[-2];
+    background-color: #2a1d4c;
+  }
+
+  .honeycomb-row .hexagon::after {
+    @apply z-[-3] opacity-0;
+    background-color: var(--accent);
+    transform: scale(1.05);
+  }
+
+  .honeycomb-row .hexagon img {
+    @apply relative z-20 bg-transparent p-0 transition-all duration-300;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+  }
+
+  .honeycomb-row .hexagon:hover {
+    filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.9));
+  }
+
+  .honeycomb-row .hexagon:hover::after {
+    @apply opacity-100;
+  }
+
+  @media (max-width: 600px) {
+    .honeycomb-row .hexagon {
+      width: 100px;
+      height: 115px;
+      margin: -8px 5px;
+    }
+
+    .honeycomb-row .hexagon img {
+      width: 60px;
+      height: 75px;
+    }
   }
 
   .section-divider {
@@ -223,8 +272,7 @@ button {
     width: 0;
     height: 0;
     transform:
-      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem))
-      scale(var(--showcase-scale, 1));
+      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem)) scale(var(--showcase-scale, 1));
   }
 
   .orbit-interaction-zone {
@@ -470,11 +518,9 @@ button {
     inset: auto;
     border-radius: 9999px;
     --wave-rotate: 0deg;
-    background-image: repeating-radial-gradient(
-      ellipse at center,
-      transparent 0 10px,
-      rgba(145, 94, 255, 0.17) 10px 12px
-    );
+    background-image: repeating-radial-gradient(ellipse at center,
+        transparent 0 10px,
+        rgba(145, 94, 255, 0.17) 10px 12px);
     animation: drift 18s ease-in-out infinite alternate;
     filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.18));
   }

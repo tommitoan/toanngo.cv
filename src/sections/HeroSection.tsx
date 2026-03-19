@@ -8,7 +8,7 @@ export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="home" className="section-shell relative pb-14 pt-4 md:pb-20 md:pt-10">
+    <section id="home" className="section-shell relative">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute right-[-12rem] top-10 hidden h-[44rem] w-[44rem] rounded-full border border-white/5 bg-gradient-to-br from-blue-500/8 via-violet/6 to-transparent lg:block" />
         <div className="absolute left-[-10rem] top-16 hidden h-[32rem] w-[32rem] rounded-full bg-violet/6 blur-3xl lg:block" />
