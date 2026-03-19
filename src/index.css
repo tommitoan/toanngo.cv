@@ -186,17 +186,17 @@ button {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
-    min-height: 36rem;
+    min-height: var(--showcase-stage-min-height, 36rem);
     overflow: visible;
     isolation: isolate;
   }
 
   .hero-orbit-light {
     position: absolute;
-    right: 14%;
-    top: 3%;
-    width: 6rem;
-    height: 6rem;
+    right: var(--showcase-light-right, 14%);
+    top: var(--showcase-light-top, 3%);
+    width: var(--showcase-light-size, 6rem);
+    height: var(--showcase-light-size, 6rem);
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.75);
     filter: blur(28px);
@@ -205,28 +205,37 @@ button {
 
   .hero-orbit-glow {
     position: absolute;
-    inset: 24%;
+    inset: var(--showcase-glow-inset, 24%);
     border-radius: 9999px;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(168, 85, 247, 0.24), rgba(236, 72, 153, 0.14));
     filter: blur(52px);
   }
 
-  .orbit-system {
+  .orbit-system-frame {
     position: absolute;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-system {
+    position: relative;
     width: 0;
     height: 0;
-    transform: translate(-50%, -50%);
+    transform:
+      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem))
+      scale(var(--showcase-scale, 1));
   }
 
   .orbit-interaction-zone {
     position: absolute;
+    width: 0;
+    height: 0;
     left: 50%;
     top: 50%;
-    width: 35rem;
-    height: 35rem;
-    transform: translate(-50%, -50%);
+    width: calc(var(--showcase-zone-size, 35rem) * var(--showcase-scale, 1));
+    height: calc(var(--showcase-zone-size, 35rem) * var(--showcase-scale, 1));
+    transform: translate(calc(-50% + var(--showcase-offset-x, 0rem)), calc(-50% + var(--showcase-offset-y, 0rem)));
   }
 
   .orbit-track {
@@ -249,7 +258,9 @@ button {
   }
 
   .orbit-track-ghost {
-    border-color: rgba(255, 255, 255, 0.06);
+    width: var(--showcase-ghost-diameter, 18rem);
+    height: var(--showcase-ghost-diameter, 18rem);
+    border-color: var(--showcase-ghost-track-color, rgba(255, 255, 255, 0.06));
   }
 
   .orbit-core-shell {
@@ -269,12 +280,12 @@ button {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 6.5rem;
-    height: 6.5rem;
+    width: var(--showcase-core-pulse-size, 6.5rem);
+    height: var(--showcase-core-pulse-size, 6.5rem);
     transform: translate(-50%, -50%);
     border-radius: 9999px;
     background:
-      radial-gradient(circle, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.08) 55%, transparent 74%);
+      radial-gradient(circle, var(--showcase-core-pulse-from, rgba(168, 85, 247, 0.2)), var(--showcase-core-pulse-to, rgba(59, 130, 246, 0.08)) 55%, transparent 74%);
     filter: blur(18px);
   }
 
@@ -286,15 +297,15 @@ button {
   }
 
   .orbit-core-icon {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: var(--showcase-core-icon-size, 4.5rem);
+    height: var(--showcase-core-icon-size, 4.5rem);
     border-radius: 1.25rem;
-    background: linear-gradient(135deg, #3b82f6, #9333ea, #ec4899);
+    background: var(--showcase-core-icon-gradient, linear-gradient(135deg, #3b82f6, #9333ea, #ec4899));
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 1.75rem;
+    font-size: var(--showcase-core-icon-font-size, 1.75rem);
     font-weight: 800;
     box-shadow:
       0 24px 40px rgba(147, 51, 234, 0.28),
@@ -318,8 +329,8 @@ button {
     position: absolute;
     left: 0;
     top: 0;
-    width: 1.15rem;
-    height: 1.15rem;
+    width: var(--orbit-node-size, 1.15rem);
+    height: var(--orbit-node-size, 1.15rem);
     transform: translate(-50%, -50%);
     border: 0;
     padding: 0;
@@ -335,8 +346,8 @@ button {
   .orbit-planet-aura {
     position: absolute;
     inset: 50% auto auto 50%;
-    width: 0.9rem;
-    height: 0.9rem;
+    width: calc(var(--orbit-node-size, 1.15rem) - 0.25rem);
+    height: calc(var(--orbit-node-size, 1.15rem) - 0.25rem);
     transform: translate(-50%, -50%);
     border-radius: 9999px;
     opacity: 0.45;
@@ -404,8 +415,26 @@ button {
     height: 0.5rem;
     transform: translateY(-50%);
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+    background: var(--orbit-tooltip-accent, rgba(255, 255, 255, 0.9));
+    box-shadow: 0 0 14px color-mix(in srgb, var(--orbit-tooltip-accent, rgba(255, 255, 255, 0.9)) 70%, white 30%);
+  }
+
+  .orbit-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 0.7rem;
+    margin-left: 0.9rem;
+    padding: 0 0.45rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orbit-tooltip-accent, #fff);
+    background: color-mix(in srgb, var(--orbit-tooltip-accent, #fff) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--orbit-tooltip-accent, #fff) 28%, transparent);
   }
 
   .orbit-badge-name {
@@ -416,12 +445,16 @@ button {
     text-transform: uppercase;
   }
 
+  .orbit-badge-name-with-icon {
+    padding-left: 0.7rem;
+  }
+
   .orbit-label-planet {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 0.82rem;
-    height: 0.82rem;
+    width: calc(var(--orbit-node-size, 1.15rem) - 0.33rem);
+    height: calc(var(--orbit-node-size, 1.15rem) - 0.33rem);
     transform: translate(-50%, -50%);
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.28);

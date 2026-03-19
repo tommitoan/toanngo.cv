@@ -16,12 +16,19 @@ It now includes:
 Files involved:
 
 - `src/components/HeroOrbitScene.tsx`
+- `src/components/hero-showcase/HeroShowcaseScene.tsx`
+- `src/components/hero-showcase/OrbitLayer.tsx`
+- `src/components/hero-showcase/OrbitSkillNode.tsx`
+- `src/components/hero-showcase/useHeroShowcaseCycle.ts`
+- `src/components/hero-showcase/config.ts`
+- `src/components/hero-showcase/types.ts`
 - `src/sections/HeroSection.tsx`
 - `src/index.css`
 
 Technical notes:
 
 - the final hero uses Framer Motion only
+- `HeroOrbitScene.tsx` is now only a thin export wrapper, and the real scene is split into a config, a cycle hook, orbit layers, and orbit nodes
 - the right-side scene now uses circular orbit trajectories instead of ellipses
 - the rings, moving planets, and center icon now share one explicit center anchor to avoid drift between layers
 - each orbit item keeps only a visible planet marker by default and reveals a timed projected HUD label on hover or focus
@@ -34,6 +41,8 @@ Technical notes:
 - reduced-motion users get the same layout with the continuous orbit motion removed
 - the left side uses the earlier freeform intro composition instead of a boxed hero shell
 - the global background now includes three lightweight twinkling star layers implemented in CSS
+- the right hero column width, system offset, stage sizing, and core sizing now come from `heroShowcaseConfig.layout`
+- orbit radius, duration, direction, track color, node count, tooltip behavior, and per-node styling now come from `heroShowcaseConfig.orbits`
 
 ## Content implementation
 
@@ -54,3 +63,4 @@ pnpm build
 ## Next likely implementation step
 
 - import real imagery into the overview and projects sections
+- optionally add a third orbit or icon-driven tooltips now that the hero scene is modular

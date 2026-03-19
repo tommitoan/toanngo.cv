@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "../components/Reveal";
 import { HeroOrbitScene } from "../components/HeroOrbitScene";
+import { heroShowcaseConfig } from "../components/hero-showcase/config";
 import { portfolio } from "../content/portfolio";
 
 export function HeroSection() {
@@ -81,7 +82,10 @@ export function HeroSection() {
         </Reveal>
 
         <Reveal className="hidden lg:block lg:pl-4" delay={0.14}>
-          <div className="relative mx-auto max-w-[38rem]">
+          <div
+            className="relative mx-auto"
+            style={{ maxWidth: `${heroShowcaseConfig.layout.frameMaxWidthRem}rem` }}
+          >
             <HeroOrbitScene />
           </div>
         </Reveal>
