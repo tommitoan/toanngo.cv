@@ -182,6 +182,285 @@ button {
     border: 1px solid rgba(145, 94, 255, 0.16);
   }
 
+  .hero-orbit-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: var(--showcase-stage-min-height, 36rem);
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  .hero-orbit-light {
+    position: absolute;
+    right: var(--showcase-light-right, 14%);
+    top: var(--showcase-light-top, 3%);
+    width: var(--showcase-light-size, 6rem);
+    height: var(--showcase-light-size, 6rem);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.75);
+    filter: blur(28px);
+    opacity: 0.6;
+  }
+
+  .hero-orbit-glow {
+    position: absolute;
+    inset: var(--showcase-glow-inset, 24%);
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(168, 85, 247, 0.24), rgba(236, 72, 153, 0.14));
+    filter: blur(52px);
+  }
+
+  .orbit-system-frame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-system {
+    position: relative;
+    width: 0;
+    height: 0;
+    transform:
+      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem))
+      scale(var(--showcase-scale, 1));
+  }
+
+  .orbit-interaction-zone {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--showcase-zone-size, 35rem) * var(--showcase-scale, 1));
+    height: calc(var(--showcase-zone-size, 35rem) * var(--showcase-scale, 1));
+    transform: translate(calc(-50% + var(--showcase-offset-x, 0rem)), calc(-50% + var(--showcase-offset-y, 0rem)));
+  }
+
+  .orbit-track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 18px rgba(59, 130, 246, 0.05);
+    pointer-events: none;
+  }
+
+  .orbit-track-inner {
+    border-color: rgba(96, 165, 250, 0.18);
+  }
+
+  .orbit-track-outer {
+    border-color: rgba(168, 85, 247, 0.16);
+  }
+
+  .orbit-track-ghost {
+    width: var(--showcase-ghost-diameter, 18rem);
+    height: var(--showcase-ghost-diameter, 18rem);
+    border-color: var(--showcase-ghost-track-color, rgba(255, 255, 255, 0.06));
+  }
+
+  .orbit-core-shell {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  .orbit-core-pulse {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--showcase-core-pulse-size, 6.5rem);
+    height: var(--showcase-core-pulse-size, 6.5rem);
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle, var(--showcase-core-pulse-from, rgba(168, 85, 247, 0.2)), var(--showcase-core-pulse-to, rgba(59, 130, 246, 0.08)) 55%, transparent 74%);
+    filter: blur(18px);
+  }
+
+  .orbit-core-icon-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-core-icon {
+    width: var(--showcase-core-icon-size, 4.5rem);
+    height: var(--showcase-core-icon-size, 4.5rem);
+    border-radius: 1.25rem;
+    background: var(--showcase-core-icon-gradient, linear-gradient(135deg, #3b82f6, #9333ea, #ec4899));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: var(--showcase-core-icon-font-size, 1.75rem);
+    font-weight: 800;
+    box-shadow:
+      0 24px 40px rgba(147, 51, 234, 0.28),
+      0 8px 20px rgba(59, 130, 246, 0.24);
+  }
+
+  .orbit-node {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .orbit-skill-anchor {
+    position: relative;
+    width: 0;
+    height: 0;
+    overflow: visible;
+  }
+
+  .orbit-planet-trigger {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--orbit-node-size, 1.15rem);
+    height: var(--orbit-node-size, 1.15rem);
+    transform: translate(-50%, -50%);
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .orbit-planet-trigger:focus-visible {
+    outline: none;
+  }
+
+  .orbit-planet-aura {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: calc(var(--orbit-node-size, 1.15rem) - 0.25rem);
+    height: calc(var(--orbit-node-size, 1.15rem) - 0.25rem);
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    opacity: 0.45;
+  }
+
+  .orbit-hud {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .orbit-hud-beam {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    transform-origin: left center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+  }
+
+  .orbit-hud-panel-position {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .orbit-hud-panel-anchor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-badge {
+    @apply inline-flex items-center rounded-2xl border border-white/15 px-4 py-2 text-white shadow-2xl;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 9rem;
+    white-space: nowrap;
+    pointer-events: none;
+    clip-path: polygon(0.8rem 0, 100% 0, 100% calc(100% - 0.7rem), calc(100% - 0.8rem) 100%, 0 100%, 0 0.8rem);
+  }
+
+  .orbit-badge-floating {
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.74)),
+      linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(217, 70, 239, 0.2));
+    box-shadow:
+      0 18px 34px rgba(15, 23, 42, 0.26),
+      0 0 24px rgba(168, 85, 247, 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+  }
+
+  .orbit-badge-target {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: translateY(-50%);
+    border-radius: 9999px;
+    background: var(--orbit-tooltip-accent, rgba(255, 255, 255, 0.9));
+    box-shadow: 0 0 14px color-mix(in srgb, var(--orbit-tooltip-accent, rgba(255, 255, 255, 0.9)) 70%, white 30%);
+  }
+
+  .orbit-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 0.7rem;
+    margin-left: 0.9rem;
+    padding: 0 0.45rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orbit-tooltip-accent, #fff);
+    background: color-mix(in srgb, var(--orbit-tooltip-accent, #fff) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--orbit-tooltip-accent, #fff) 28%, transparent);
+  }
+
+  .orbit-badge-name {
+    padding-left: 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .orbit-badge-name-with-icon {
+    padding-left: 0.7rem;
+  }
+
+  .orbit-label-planet {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--orbit-node-size, 1.15rem) - 0.33rem);
+    height: calc(var(--orbit-node-size, 1.15rem) - 0.33rem);
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    z-index: 2;
+  }
+
   .soft-caption {
     @apply text-xs uppercase tracking-[0.26em] text-slate-500;
   }
@@ -221,6 +500,74 @@ button {
   }
 }
 
+.starfield {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+}
+
+.starfield-far {
+  background-image:
+    radial-gradient(1px 1px at 8% 14%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(1px 1px at 19% 37%, rgba(255, 255, 255, 0.75), transparent 50%),
+    radial-gradient(1px 1px at 31% 22%, rgba(255, 255, 255, 0.72), transparent 50%),
+    radial-gradient(1px 1px at 47% 9%, rgba(255, 255, 255, 0.74), transparent 50%),
+    radial-gradient(1px 1px at 58% 34%, rgba(255, 255, 255, 0.78), transparent 50%),
+    radial-gradient(1px 1px at 72% 18%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(1px 1px at 84% 28%, rgba(255, 255, 255, 0.8), transparent 50%),
+    radial-gradient(1px 1px at 93% 12%, rgba(255, 255, 255, 0.76), transparent 50%),
+    radial-gradient(1px 1px at 12% 68%, rgba(255, 255, 255, 0.72), transparent 50%),
+    radial-gradient(1px 1px at 27% 82%, rgba(255, 255, 255, 0.75), transparent 50%),
+    radial-gradient(1px 1px at 41% 63%, rgba(255, 255, 255, 0.7), transparent 50%),
+    radial-gradient(1px 1px at 63% 76%, rgba(255, 255, 255, 0.78), transparent 50%),
+    radial-gradient(1px 1px at 79% 87%, rgba(255, 255, 255, 0.74), transparent 50%),
+    radial-gradient(1px 1px at 91% 72%, rgba(255, 255, 255, 0.76), transparent 50%);
+  animation: star-twinkle 7s ease-in-out infinite alternate;
+}
+
+.starfield-mid {
+  background-image:
+    radial-gradient(1.5px 1.5px at 6% 22%, rgba(255, 255, 255, 0.86), transparent 55%),
+    radial-gradient(1.5px 1.5px at 16% 49%, rgba(255, 255, 255, 0.82), transparent 55%),
+    radial-gradient(1.5px 1.5px at 24% 12%, rgba(255, 255, 255, 0.8), transparent 55%),
+    radial-gradient(1.5px 1.5px at 39% 31%, rgba(255, 255, 255, 0.84), transparent 55%),
+    radial-gradient(1.5px 1.5px at 53% 18%, rgba(255, 255, 255, 0.82), transparent 55%),
+    radial-gradient(1.5px 1.5px at 66% 44%, rgba(255, 255, 255, 0.88), transparent 55%),
+    radial-gradient(1.5px 1.5px at 74% 24%, rgba(255, 255, 255, 0.84), transparent 55%),
+    radial-gradient(1.5px 1.5px at 87% 39%, rgba(255, 255, 255, 0.82), transparent 55%),
+    radial-gradient(1.5px 1.5px at 95% 19%, rgba(255, 255, 255, 0.8), transparent 55%),
+    radial-gradient(1.5px 1.5px at 9% 79%, rgba(255, 255, 255, 0.84), transparent 55%),
+    radial-gradient(1.5px 1.5px at 22% 92%, rgba(255, 255, 255, 0.8), transparent 55%),
+    radial-gradient(1.5px 1.5px at 36% 72%, rgba(255, 255, 255, 0.86), transparent 55%),
+    radial-gradient(1.5px 1.5px at 49% 86%, rgba(255, 255, 255, 0.82), transparent 55%),
+    radial-gradient(1.5px 1.5px at 61% 67%, rgba(255, 255, 255, 0.86), transparent 55%),
+    radial-gradient(1.5px 1.5px at 76% 81%, rgba(255, 255, 255, 0.84), transparent 55%),
+    radial-gradient(1.5px 1.5px at 88% 63%, rgba(255, 255, 255, 0.82), transparent 55%);
+  animation:
+    star-twinkle 5.2s ease-in-out infinite alternate-reverse,
+    star-drift 90s linear infinite;
+}
+
+.starfield-near {
+  background-image:
+    radial-gradient(2px 2px at 13% 17%, rgba(255, 255, 255, 0.92), transparent 60%),
+    radial-gradient(2px 2px at 28% 42%, rgba(255, 255, 255, 0.88), transparent 60%),
+    radial-gradient(2px 2px at 42% 24%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(2px 2px at 57% 51%, rgba(255, 255, 255, 0.94), transparent 60%),
+    radial-gradient(2px 2px at 71% 16%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(2px 2px at 83% 36%, rgba(255, 255, 255, 0.92), transparent 60%),
+    radial-gradient(2px 2px at 94% 55%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(2px 2px at 18% 74%, rgba(255, 255, 255, 0.88), transparent 60%),
+    radial-gradient(2px 2px at 33% 88%, rgba(255, 255, 255, 0.94), transparent 60%),
+    radial-gradient(2px 2px at 52% 78%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(2px 2px at 69% 92%, rgba(255, 255, 255, 0.92), transparent 60%),
+    radial-gradient(2px 2px at 86% 69%, rgba(255, 255, 255, 0.9), transparent 60%);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.35));
+  animation:
+    star-twinkle 3.8s ease-in-out infinite alternate,
+    star-drift 120s linear infinite reverse;
+}
+
 @keyframes drift {
   from {
     transform: translate3d(0, 0, 0) rotate(var(--wave-rotate));
@@ -228,5 +575,25 @@ button {
 
   to {
     transform: translate3d(0, 16px, 0) rotate(calc(var(--wave-rotate) + 8deg));
+  }
+}
+
+@keyframes star-twinkle {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 0.92;
+  }
+}
+
+@keyframes star-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-1.5rem, 1rem, 0);
   }
 }

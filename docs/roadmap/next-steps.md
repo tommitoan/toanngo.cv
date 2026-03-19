@@ -9,11 +9,9 @@
 
 ## Premium upgrades after the lean pass
 
-- stronger hero art direction or an interactive visual
 - more advanced section transitions
 - project detail views or case-study pages
 - contact form integration
-- optional 3D hero or background treatment if it adds value
 
 ## Guardrails
 
