@@ -1,1 +1,1 @@
-export { HeroShowcaseScene as HeroOrbitScene } from "./hero-showcase/HeroShowcaseScene";
+export { HeroLabelOrbitScene as HeroOrbitScene } from "./HeroLabelOrbitScene";
