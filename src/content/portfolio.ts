@@ -14,10 +14,15 @@ type Principle = {
   description: string;
 };
 
+export type SkillItem = {
+  name: string;
+  icon?: string;
+};
+
 type SkillGroup = {
   title: string;
-  label: string;
-  items: string[];
+  accent: string;
+  items: SkillItem[];
 };
 
 type ExperienceItem = {
@@ -47,8 +52,7 @@ export const portfolio = {
     { id: "about", label: "Overview" },
     { id: "skills", label: "Skills" },
     { id: "experience", label: "Journey" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" }
+    { id: "projects", label: "Projects" }
   ] satisfies NavigationItem[],
   hero: {
     eyebrow: "Software Engineer",
@@ -61,7 +65,7 @@ export const portfolio = {
     highlights: ["Go and gRPC", "AWS and Kubernetes", "API-first backend"],
     ctas: [
       { label: "View Projects", href: "#projects", variant: "primary" },
-      { label: "Resume", href: "/ToanNgo-resume.pdf", variant: "secondary" }
+      { label: "Contact Me", href: "#contact", variant: "secondary" }
     ] satisfies ActionLink[],
     metrics: [
       { value: "3+", label: "Years Experience" },
@@ -79,7 +83,6 @@ export const portfolio = {
       "I also work across the stack when needed, using React and TypeScript to help deliver complete product experiences."
     ],
     actions: [
-      { label: "Resume", href: "/ToanNgo-resume.pdf", variant: "primary" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/tommitoan/", variant: "primary" },
       { label: "GitHub", href: "https://github.com/tommitoan", variant: "secondary" }
     ] satisfies ActionLink[],
@@ -100,19 +103,37 @@ export const portfolio = {
   },
   skills: [
     {
-      title: "Backend and API",
-      label: "<backend>",
-      items: ["Go", "gRPC", "REST APIs", "OpenAPI", "Clean Architecture"]
+      title: "Backend & API",
+      accent: "violet",
+      items: [
+        { name: "Go", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" },
+        { name: "gRPC", icon: "https://cdn.simpleicons.org/google/white" },
+        { name: "REST APIs", icon: "https://cdn.simpleicons.org/fastapi/white" },
+        { name: "OpenAPI", icon: "https://cdn.simpleicons.org/openapiinitiative/white" },
+        { name: "Clean Arch" }
+      ]
     },
     {
-      title: "Cloud and DevOps",
-      label: "<cloud>",
-      items: ["AWS", "Kubernetes", "Docker", "Argo CD", "GitHub Actions"]
+      title: "Cloud & DevOps",
+      accent: "cyan",
+      items: [
+        { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+        { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
+        { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+        { name: "Argo CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg" },
+        { name: "Actions", icon: "https://cdn.simpleicons.org/githubactions/white" }
+      ]
     },
     {
-      title: "Platform and Product",
-      label: "<platform>",
-      items: ["PostgreSQL", "Redis", "OpenTelemetry", "React", "TypeScript"]
+      title: "Platform & Data",
+      accent: "pink",
+      items: [
+        { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
+        { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" },
+        { name: "OpenTelemetry", icon: "https://cdn.simpleicons.org/opentelemetry/white" },
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" }
+      ]
     }
   ] satisfies SkillGroup[],
   experience: [

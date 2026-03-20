@@ -4,12 +4,18 @@ import { portfolio } from "../content/portfolio";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="section-shell py-12 md:py-16">
+    <section id="experience" className="section-shell">
       <Reveal>
         <SectionHeading
           eyebrow="Professional path"
-          title="Journey."
-          description="The timeline keeps the same center-line energy as the reference screenshots, but stays simple enough to edit without bringing in a specialized timeline library."
+          title={<span className="gradient-text-purple-pink">Journey.</span>}
+          description={
+            <>
+              From building microservices to architecting{" "}
+              <span className="gradient-text-cyan-blue">cloud-native platforms</span> — each
+              step refined my craft in Go, AWS, and system design.
+            </>
+          }
         />
       </Reveal>
 
@@ -22,9 +28,8 @@ export function ExperienceSection() {
             delay={0.08 * (index + 1)}
           >
             <div
-              className={`mb-4 flex items-center gap-4 md:mb-0 ${
-                index % 2 === 0 ? "md:justify-end md:pr-10" : "md:order-2 md:pl-10"
-              }`}
+              className={`mb-4 flex items-center gap-4 md:mb-0 ${index % 2 === 0 ? "md:justify-end md:pr-10" : "md:order-2 md:pl-10"
+                }`}
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-[#0f1430] text-sm font-semibold text-violet shadow-glow">
                 {item.period}
@@ -35,9 +40,8 @@ export function ExperienceSection() {
             </div>
 
             <article
-              className={`panel rounded-[1.75rem] border-b-2 border-b-slate-200/70 p-6 md:p-7 ${
-                index % 2 === 0 ? "md:ml-10" : "md:mr-10 md:order-1"
-              }`}
+              className={`panel rounded-[1.75rem] border-b-2 border-b-slate-200/70 p-6 md:p-7 ${index % 2 === 0 ? "md:ml-10" : "md:mr-10 md:order-1"
+                }`}
             >
               <p className="text-lg font-medium text-slate-300">{item.company}</p>
               <h3 className="mt-2 text-3xl font-bold leading-tight text-white">{item.title}</h3>

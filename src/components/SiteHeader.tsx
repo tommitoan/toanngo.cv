@@ -10,8 +10,8 @@ export function SiteHeader({ items }: SiteHeaderProps) {
       <div className="section-shell mt-4 border-b border-white/5 bg-[#070b19]/78 px-1 py-3 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-4">
           <a href="#home" className="flex min-w-fit items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-violet/30 bg-gradient-to-br from-violet/70 to-cyan/40 text-[11px] font-semibold text-white shadow-glow">
-              TN
+            <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-violet/30 bg-gradient-to-br from-violet/70 to-cyan/40 shadow-glow">
+              <img src="/avatar_cartoon.png" alt="Toan Ngo" className="h-full w-full object-cover" />
             </span>
             <span className="brand-script text-[2rem] text-white">Toan Ngo</span>
           </a>
@@ -28,7 +28,10 @@ export function SiteHeader({ items }: SiteHeaderProps) {
             ))}
           </nav>
 
-          <a href="#contact" className="gradient-button hidden min-w-fit md:inline-flex">
+          <a
+            href="#contact"
+            className="gradient-button hidden min-w-fit md:inline-flex"
+          >
             Contact
           </a>
         </div>

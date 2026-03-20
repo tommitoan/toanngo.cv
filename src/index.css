@@ -32,47 +32,6 @@ body {
   font-family: "Outfit", sans-serif;
   color: var(--text);
   background-color: var(--bg);
-  background-image:
-    radial-gradient(circle at top center, rgba(145, 94, 255, 0.12), transparent 26%),
-    linear-gradient(180deg, rgba(5, 8, 22, 0.96), rgba(5, 8, 22, 1));
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: -18vw;
-  left: -14vw;
-  width: 58vw;
-  height: 58vw;
-  background-image: repeating-radial-gradient(
-    ellipse at center,
-    transparent 0 10px,
-    rgba(145, 94, 255, 0.22) 10px 12px
-  );
-  transform: rotate(18deg);
-  opacity: 0.24;
-  mask-image: linear-gradient(135deg, black 35%, transparent 85%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  right: -18vw;
-  top: 2vh;
-  width: 52vw;
-  height: 52vw;
-  background-image: repeating-radial-gradient(
-    ellipse at center,
-    transparent 0 10px,
-    rgba(145, 94, 255, 0.22) 10px 12px
-  );
-  transform: rotate(-22deg);
-  opacity: 0.28;
-  mask-image: linear-gradient(225deg, black 38%, transparent 86%);
-  pointer-events: none;
-  z-index: -1;
 }
 
 a {
@@ -94,7 +53,8 @@ button {
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-[min(1180px,calc(100%-2rem))];
+    @apply mx-auto scroll-mt-24 md:scroll-mt-32;
+    width: min(1180px, calc(100% - 2rem));
   }
 
   .panel {
@@ -128,6 +88,22 @@ button {
     @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-200;
   }
 
+  /* Highlighted pill — used for hero highlights like "Go and gRPC" */
+  .pill-gradient {
+    @apply inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold text-white;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(79, 124, 255, 0.25));
+    border: 1px solid rgba(145, 94, 255, 0.35);
+    box-shadow: 0 0 16px rgba(145, 94, 255, 0.12);
+  }
+
+  /* Tech stack pill — used in project cards */
+  .pill-tech {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
+    background: linear-gradient(135deg, rgba(145, 94, 255, 0.12), rgba(79, 124, 255, 0.12));
+    border: 1px solid rgba(145, 94, 255, 0.22);
+    color: #c4b5fd;
+  }
+
   .brand-script {
     @apply font-brand text-3xl tracking-tight text-slate-200;
   }
@@ -138,6 +114,36 @@ button {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Gradient text utilities inspired by "Precision & Passion" */
+  .gradient-text-primary {
+    background: linear-gradient(135deg, #915eff, #b07eff 45%, #4e8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-purple-pink {
+    background: linear-gradient(135deg, #a78bfa, #c084fc 45%, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue-purple {
+    background: linear-gradient(135deg, #60a5fa, #818cf8 45%, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cyan-blue {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6 45%, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
 
   .gradient-button {
     @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white transition;
@@ -162,14 +168,6 @@ button {
     background: linear-gradient(180deg, rgba(145, 94, 255, 0.16), rgba(255, 255, 255, 0.04));
   }
 
-  .skill-hex {
-    clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
-    background:
-      linear-gradient(180deg, rgba(145, 94, 255, 0.32), rgba(71, 45, 127, 0.75)),
-      var(--panel-soft);
-    border: 1px solid rgba(145, 94, 255, 0.26);
-    box-shadow: 0 18px 40px rgba(3, 5, 18, 0.3);
-  }
 
   .section-divider {
     @apply absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/15 md:block;
@@ -223,8 +221,7 @@ button {
     width: 0;
     height: 0;
     transform:
-      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem))
-      scale(var(--showcase-scale, 1));
+      translate(var(--showcase-offset-x, 0rem), var(--showcase-offset-y, 0rem)) scale(var(--showcase-scale, 1));
   }
 
   .orbit-interaction-zone {
@@ -470,13 +467,12 @@ button {
     inset: auto;
     border-radius: 9999px;
     --wave-rotate: 0deg;
-    background-image: repeating-radial-gradient(
-      ellipse at center,
-      transparent 0 10px,
-      rgba(145, 94, 255, 0.17) 10px 12px
-    );
+    /* ↓ ring colour — lower alpha = more subtle */
+    background-image: repeating-radial-gradient(ellipse at center,
+        transparent 0 10px,
+        rgba(145, 94, 255, 0.05) 10px 12px);
     animation: drift 18s ease-in-out infinite alternate;
-    filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.18));
+    filter: drop-shadow(0 0 4px rgba(145, 94, 255, 0.05));
   }
 
   .wave-field-left {
@@ -485,7 +481,7 @@ button {
     width: 34rem;
     height: 34rem;
     --wave-rotate: 14deg;
-    opacity: 0.2;
+    opacity: 0.45; /* set to 0 to hide */
     mask-image: linear-gradient(135deg, black 40%, transparent 84%);
   }
 
@@ -495,7 +491,7 @@ button {
     width: 42rem;
     height: 42rem;
     --wave-rotate: -18deg;
-    opacity: 0.3;
+    opacity: 0.35; /* set to 0 to hide */
     mask-image: linear-gradient(215deg, black 40%, transparent 88%);
   }
 }
