@@ -52,8 +52,7 @@ export const portfolio = {
     { id: "about", label: "Overview" },
     { id: "skills", label: "Skills" },
     { id: "experience", label: "Journey" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" }
+    { id: "projects", label: "Projects" }
   ] satisfies NavigationItem[],
   hero: {
     eyebrow: "Software Engineer",

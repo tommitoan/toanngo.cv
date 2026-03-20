@@ -11,7 +11,7 @@ export function SiteHeader({ items }: SiteHeaderProps) {
         <div className="flex items-center justify-between gap-4">
           <a href="#home" className="flex min-w-fit items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-violet/30 bg-gradient-to-br from-violet/70 to-cyan/40 shadow-glow">
-              <img src="/avatar.png" alt="Toan Ngo" className="h-full w-full object-cover" />
+              <img src="/avatar_cartoon.png" alt="Toan Ngo" className="h-full w-full object-cover" />
             </span>
             <span className="brand-script text-[2rem] text-white">Toan Ngo</span>
           </a>
@@ -29,12 +29,10 @@ export function SiteHeader({ items }: SiteHeaderProps) {
           </nav>
 
           <a
-            href="/ToanNgo-resume.pdf"
-            target="_blank"
-            rel="noreferrer"
+            href="#contact"
             className="gradient-button hidden min-w-fit md:inline-flex"
           >
-            Resume
+            Contact
           </a>
         </div>
       </div>

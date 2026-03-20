@@ -46,6 +46,16 @@ export function AboutSection() {
               </a>
             ))}
           </div>
+
+          <a
+              href="/ToanNgo-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="gradient-button mb-6 mt-4"
+          >
+            Resume ↗
+          </a>
+
         </Reveal>
 
         <div className="grid gap-5">
