@@ -32,43 +32,6 @@ body {
   font-family: "Outfit", sans-serif;
   color: var(--text);
   background-color: var(--bg);
-  background-image:
-    radial-gradient(circle at top center, rgba(145, 94, 255, 0.12), transparent 26%),
-    linear-gradient(180deg, rgba(5, 8, 22, 0.96), rgba(5, 8, 22, 1));
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: -18vw;
-  left: -14vw;
-  width: 58vw;
-  height: 58vw;
-  background-image: repeating-radial-gradient(ellipse at center,
-      transparent 0 10px,
-      rgba(145, 94, 255, 0.22) 10px 12px);
-  transform: rotate(18deg);
-  opacity: 0.24;
-  mask-image: linear-gradient(135deg, black 35%, transparent 85%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  right: -18vw;
-  top: 2vh;
-  width: 52vw;
-  height: 52vw;
-  background-image: repeating-radial-gradient(ellipse at center,
-      transparent 0 10px,
-      rgba(145, 94, 255, 0.22) 10px 12px);
-  transform: rotate(-22deg);
-  opacity: 0.28;
-  mask-image: linear-gradient(225deg, black 38%, transparent 86%);
-  pointer-events: none;
-  z-index: -1;
 }
 
 a {
@@ -518,11 +481,12 @@ button {
     inset: auto;
     border-radius: 9999px;
     --wave-rotate: 0deg;
+    /* ↓ ring colour — lower alpha = more subtle */
     background-image: repeating-radial-gradient(ellipse at center,
         transparent 0 10px,
-        rgba(145, 94, 255, 0.17) 10px 12px);
+        rgba(145, 94, 255, 0.05) 10px 12px);
     animation: drift 18s ease-in-out infinite alternate;
-    filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.18));
+    filter: drop-shadow(0 0 4px rgba(145, 94, 255, 0.05));
   }
 
   .wave-field-left {
@@ -531,7 +495,7 @@ button {
     width: 34rem;
     height: 34rem;
     --wave-rotate: 14deg;
-    opacity: 0.2;
+    opacity: 0.45; /* set to 0 to hide */
     mask-image: linear-gradient(135deg, black 40%, transparent 84%);
   }
 
@@ -541,7 +505,7 @@ button {
     width: 42rem;
     height: 42rem;
     --wave-rotate: -18deg;
-    opacity: 0.3;
+    opacity: 0.35; /* set to 0 to hide */
     mask-image: linear-gradient(215deg, black 40%, transparent 88%);
   }
 }
