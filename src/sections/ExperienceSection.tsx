@@ -8,8 +8,14 @@ export function ExperienceSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Professional path"
-          title="Journey."
-          description="The timeline keeps the same center-line energy as the reference screenshots, but stays simple enough to edit without bringing in a specialized timeline library."
+          title={<span className="gradient-text-purple-pink">Journey.</span>}
+          description={
+            <>
+              From building microservices to architecting{" "}
+              <span className="gradient-text-cyan-blue">cloud-native platforms</span> — each
+              step refined my craft in Go, AWS, and system design.
+            </>
+          }
         />
       </Reveal>
 

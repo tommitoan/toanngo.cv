@@ -66,7 +66,7 @@ export const portfolio = {
     highlights: ["Go and gRPC", "AWS and Kubernetes", "API-first backend"],
     ctas: [
       { label: "View Projects", href: "#projects", variant: "primary" },
-      { label: "Resume", href: "/ToanNgo-resume.pdf", variant: "secondary" }
+      { label: "Contact Me", href: "#contact", variant: "secondary" }
     ] satisfies ActionLink[],
     metrics: [
       { value: "3+", label: "Years Experience" },
@@ -84,7 +84,6 @@ export const portfolio = {
       "I also work across the stack when needed, using React and TypeScript to help deliver complete product experiences."
     ],
     actions: [
-      { label: "Resume", href: "/ToanNgo-resume.pdf", variant: "primary" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/tommitoan/", variant: "primary" },
       { label: "GitHub", href: "https://github.com/tommitoan", variant: "secondary" }
     ] satisfies ActionLink[],

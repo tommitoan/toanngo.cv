@@ -36,7 +36,8 @@ export function HeroSection() {
             transition={reducedMotion ? undefined : { duration: 0.82, delay: 0.18 }}
             className="mt-5 max-w-3xl text-2xl font-semibold leading-tight text-slate-200 md:text-[2rem]"
           >
-            {portfolio.hero.role}
+            Building <span className="gradient-text-purple-pink">Scalable Systems</span> with{" "}
+            <span className="gradient-text-blue-purple">Precision & Passion</span>
           </motion.p>
 
           <motion.p
@@ -55,7 +56,7 @@ export function HeroSection() {
             className="mt-8 flex flex-wrap gap-3"
           >
             {portfolio.hero.highlights.map((highlight) => (
-              <span key={highlight} className="pill">
+              <span key={highlight} className="pill-gradient">
                 {highlight}
               </span>
             ))}

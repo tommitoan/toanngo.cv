@@ -88,6 +88,22 @@ button {
     @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-200;
   }
 
+  /* Highlighted pill — used for hero highlights like "Go and gRPC" */
+  .pill-gradient {
+    @apply inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold text-white;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(79, 124, 255, 0.25));
+    border: 1px solid rgba(145, 94, 255, 0.35);
+    box-shadow: 0 0 16px rgba(145, 94, 255, 0.12);
+  }
+
+  /* Tech stack pill — used in project cards */
+  .pill-tech {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
+    background: linear-gradient(135deg, rgba(145, 94, 255, 0.12), rgba(79, 124, 255, 0.12));
+    border: 1px solid rgba(145, 94, 255, 0.22);
+    color: #c4b5fd;
+  }
+
   .brand-script {
     @apply font-brand text-3xl tracking-tight text-slate-200;
   }
@@ -98,6 +114,36 @@ button {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Gradient text utilities inspired by "Precision & Passion" */
+  .gradient-text-primary {
+    background: linear-gradient(135deg, #915eff, #b07eff 45%, #4e8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-purple-pink {
+    background: linear-gradient(135deg, #a78bfa, #c084fc 45%, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue-purple {
+    background: linear-gradient(135deg, #60a5fa, #818cf8 45%, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cyan-blue {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6 45%, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
 
   .gradient-button {
     @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white transition;

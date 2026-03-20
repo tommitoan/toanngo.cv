@@ -8,8 +8,8 @@ export function SkillsSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Technical proficiencies"
-          title="Skills."
-          description="A visual honeycomb representing my core technologies and toolset."
+          title={<span className="gradient-text-blue-purple">Skills.</span>}
+          description="A visual honeycomb representing my core technologies and toolset — from backend and API design to cloud infrastructure and product delivery."
         />
       </Reveal>
 

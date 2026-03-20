@@ -8,8 +8,15 @@ export function ContactSection() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
             <span className="eyebrow">Contact</span>
-            <h2 className="section-title mt-2">{portfolio.contact.heading}</h2>
-            <p className="section-copy mt-4">{portfolio.contact.description}</p>
+            <h2 className="section-title mt-2">
+              Let's build something{" "}
+              <span className="gradient-text-primary">reliable</span>
+            </h2>
+            <p className="section-copy mt-4">
+              Based in Ho Chi Minh City, focused on backend engineering,
+              cloud infrastructure, and product-oriented system design.
+              If you want to discuss a role or a project, these are the fastest ways to reach me.
+            </p>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">

@@ -8,17 +8,28 @@ export function AboutSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Introduction"
-          title="Overview."
-          description={portfolio.about.intro}
+          title={<span className="gradient-text-primary">Overview.</span>}
+          description={
+            <>
+              I build backend systems that are fast, observable, and maintainable.
+              My current work spans <span className="gradient-text-cyan-blue">Golang services</span>, microservice architecture,
+              cloud infrastructure, CI/CD, and the <span className="gradient-text-purple-pink">product thinking</span> needed
+              to turn technical systems into usable software.
+            </>
+          }
         />
       </Reveal>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <Reveal className="flex flex-col items-center">
           <div className="relative flex h-64 w-64 items-center justify-center rounded-full border border-violet/20 bg-gradient-to-br from-violet/30 via-[#171c3b] to-[#0b1027] shadow-glow">
-            <div className="absolute inset-[14px] rounded-full bg-[#d7dce6]" />
-            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-b from-slate-200 to-slate-300 text-6xl font-bold text-[#161616]">
-              TN
+            <div className="absolute inset-[6px] overflow-hidden rounded-full">
+              <img
+                src="/avatar.png"
+                alt="Toan Ngo"
+                className="h-full w-full object-cover object-[center_15%]"
+                draggable="false"
+              />
             </div>
           </div>
 
@@ -51,17 +62,27 @@ export function AboutSection() {
             </div>
           </Reveal>
 
-          {portfolio.about.principles.map((principle, index) => (
-            <Reveal
-              key={principle.title}
-              className="panel rounded-[1.5rem] p-6"
-              delay={0.08 * (index + 1)}
-            >
-              <p className="soft-caption">Core strength</p>
-              <h3 className="mt-3 text-2xl font-semibold text-white">{principle.title}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-300">{principle.description}</p>
-            </Reveal>
-          ))}
+          {portfolio.about.principles.map((principle, index) => {
+            const gradientClass = index === 0
+              ? "gradient-text-primary"
+              : index === 1
+                ? "gradient-text-cyan-blue"
+                : "gradient-text-purple-pink";
+
+            return (
+              <Reveal
+                key={principle.title}
+                className="panel rounded-[1.5rem] p-6"
+                delay={0.08 * (index + 1)}
+              >
+                <p className="soft-caption">Core strength</p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">
+                  <span className={gradientClass}>{principle.title}</span>
+                </h3>
+                <p className="mt-3 text-base leading-7 text-slate-300">{principle.description}</p>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
