@@ -168,66 +168,6 @@ button {
     background: linear-gradient(180deg, rgba(145, 94, 255, 0.16), rgba(255, 255, 255, 0.04));
   }
 
-  .honeycomb-grid {
-    @apply flex flex-col items-center justify-center pt-5 pb-5;
-  }
-
-  .honeycomb-row {
-    @apply flex justify-center;
-  }
-
-  .honeycomb-row .hexagon {
-    @apply relative flex justify-center items-center z-10 transition-all duration-300;
-    width: 130px;
-    height: 150px;
-    margin: -10px 7.5px;
-  }
-
-  .honeycomb-row .hexagon::before,
-  .honeycomb-row .hexagon::after {
-    @apply absolute w-full h-full top-0 left-0 transition-all duration-300;
-    content: '';
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  }
-
-  .honeycomb-row .hexagon::before {
-    @apply z-[-2];
-    background-color: #2a1d4c;
-  }
-
-  .honeycomb-row .hexagon::after {
-    @apply z-[-3] opacity-0;
-    background-color: var(--accent);
-    transform: scale(1.05);
-  }
-
-  .honeycomb-row .hexagon img {
-    @apply relative z-20 bg-transparent p-0 transition-all duration-300;
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-  }
-
-  .honeycomb-row .hexagon:hover {
-    filter: drop-shadow(0 0 10px rgba(145, 94, 255, 0.9));
-  }
-
-  .honeycomb-row .hexagon:hover::after {
-    @apply opacity-100;
-  }
-
-  @media (max-width: 600px) {
-    .honeycomb-row .hexagon {
-      width: 100px;
-      height: 115px;
-      margin: -8px 5px;
-    }
-
-    .honeycomb-row .hexagon img {
-      width: 60px;
-      height: 75px;
-    }
-  }
 
   .section-divider {
     @apply absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/15 md:block;

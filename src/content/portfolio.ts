@@ -21,7 +21,7 @@ export type SkillItem = {
 
 type SkillGroup = {
   title: string;
-  label: string;
+  accent: string;
   items: SkillItem[];
 };
 
@@ -104,8 +104,8 @@ export const portfolio = {
   },
   skills: [
     {
-      title: "Backend and API",
-      label: "<backend>",
+      title: "Backend & API",
+      accent: "violet",
       items: [
         { name: "Go", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" },
         { name: "gRPC", icon: "https://cdn.simpleicons.org/google/white" },
@@ -115,8 +115,8 @@ export const portfolio = {
       ]
     },
     {
-      title: "Cloud and DevOps",
-      label: "<cloud>",
+      title: "Cloud & DevOps",
+      accent: "cyan",
       items: [
         { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
         { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
@@ -126,12 +126,12 @@ export const portfolio = {
       ]
     },
     {
-      title: "Platform and Product",
-      label: "<platform>",
+      title: "Platform & Data",
+      accent: "pink",
       items: [
         { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
         { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" },
-        { name: "OpnTlmtry", icon: "https://cdn.simpleicons.org/opentelemetry/white" },
+        { name: "OpenTelemetry", icon: "https://cdn.simpleicons.org/opentelemetry/white" },
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
         { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" }
       ]
