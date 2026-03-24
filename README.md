@@ -1,178 +1,127 @@
-# ToanNgo.cv
+# toanngo.cv
 
-Lean personal portfolio SPA built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion.
+Personal portfolio of **Toan Ngo** — Go backend engineer.
 
-This project is a static one-page portfolio inspired by the structure and polish of modern engineer portfolios, with a premium split-screen hero and orbit-style motion layer while staying lightweight and easy to maintain.
+**Live site: [toanngo.cv](https://toanngo.cv/)**
 
-## Project goals
+> 100% vibe-coded with [OpenCode](https://opencode.ai) AI coding agent.
 
-- build a clean and responsive personal portfolio SPA
-- keep the first version simple and performant
-- make content updates easy from a single source file
-- leave room for richer motion and premium visual upgrades later
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## Current stack
+---
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
+## Stack
 
-## Current sections
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v3 |
+| Animation | Framer Motion |
+| 3D (reference only) | Three.js / React Three Fiber |
+| Package manager | pnpm |
 
-- Hero
-- About
-- Skills
-- Experience
-- Projects
-- Contact
+---
 
-## What is included in this first version
+## Sections
 
-- sticky top navigation with anchor links
-- responsive one-page layout
-- custom visual direction with dark ink background and accent lighting
-- premium split-screen hero with orbit motion
-- richer section reveal animations
-- centralized content in one file
-- structured project documentation under `docs/`
+- **Hero** — split-screen layout with animated orbit skill showcase
+- **About** — intro, engineering principles, and action links
+- **Skills** — grouped accent-colored chip grid
+- **Experience** — Mercury Studio and GTG Software timeline
+- **Projects** — bazica open-source library and homelab GitOps setup
+- **Education** — AWS Certified SAA + B.Sc. Computer Science
+- **Contact** — email, GitHub, LinkedIn
 
-## What is intentionally not included yet
-
-- project detail pages
-- CMS integration
-- contact form backend
-- advanced interaction effects
+---
 
 ## Getting started
 
-### Requirements
-
-- Node.js 20+
-- pnpm 10+
-
-### Install dependencies
+**Requirements:** Node.js 20+, pnpm 10+
 
 ```bash
-pnpm install
+pnpm install       # install dependencies
+pnpm dev           # start local dev server
+pnpm build         # production build → dist/
+pnpm preview       # preview production build locally
 ```
 
-### Start local development
-
-```bash
-pnpm dev
-```
-
-### Build for production
-
-```bash
-pnpm build
-```
-
-### Preview the production build
-
-```bash
-pnpm preview
-```
+---
 
 ## Project structure
 
-```text
+```
 toanngo.cv/
-├── docs/
-│   ├── architecture/
-│   ├── changes/
-│   └── roadmap/
+├── public/                  # static assets (resume PDF, images)
 ├── src/
 │   ├── components/
+│   │   ├── hero-showcase/   # orbit scene — config, layers, nodes, cycle hook
+│   │   └── ...              # shared UI components
 │   ├── content/
-│   ├── sections/
+│   │   └── portfolio.ts     # single source of truth for all content
+│   ├── sections/            # one file per page section
 │   ├── App.tsx
-│   ├── index.css
+│   ├── index.css            # global styles + Tailwind layers
 │   └── main.tsx
+├── docs/                    # architecture notes, change logs, roadmap
 ├── index.html
-├── package.json
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── vite.config.ts
-└── README.md
+└── package.json
 ```
 
-## Where to edit
+---
 
-### Update personal content
+## Updating content
 
-Edit:
+All personal content lives in one file:
 
-- `src/content/portfolio.ts`
+```
+src/content/portfolio.ts
+```
 
-This file controls:
+It controls: navigation labels, hero text, about copy, skill groups, experience entries, project cards, education items, contact links, and footer text.
 
-- navigation labels
-- hero text
-- about content
-- skill groups
-- experience entries
-- project cards
-- contact links
-- footer text
+---
 
-### Update the design
+## Updating the design
 
-Edit:
+| What to change | Where |
+|----------------|-------|
+| Global colors, typography, component classes | `src/index.css` |
+| Section layout and markup | `src/sections/` |
+| Hero orbit behavior and sizing | `src/components/hero-showcase/config.ts` |
 
-- `src/index.css`
-- `src/App.tsx`
-- `src/sections/`
-
-Use `src/index.css` for global look and feel, and `src/sections/` for section-specific layout decisions.
-
-## Documentation
-
-Detailed notes live under `docs/` so implementation history and next steps do not clutter the root.
-
-Start here:
-
-- `docs/README.md`
-- `docs/architecture/frontend-spa.md`
-- `docs/changes/2026-03-19-lean-spa-v1.md`
-- `docs/roadmap/next-steps.md`
+---
 
 ## Deployment
 
-This project is suitable for static hosting on:
+Static site — deploy the `dist/` folder to any static host:
 
-- Vercel
-- Netlify
-- Cloudflare Pages
-
-Basic deployment flow:
-
-1. install dependencies
-2. run `pnpm build`
-3. deploy the generated `dist/` folder
-
-## Status
-
-The current premium orbit-hero version has been scaffolded and verified with:
+- [Cloudflare Pages](https://pages.cloudflare.com)
+- [Vercel](https://vercel.com)
+- [Netlify](https://netlify.com)
 
 ```bash
 pnpm build
+# upload dist/ to your host
 ```
 
-## Next iteration ideas
+---
 
-- replace the `TN` overview placeholder with a real portrait
-- replace the generated project preview blocks with real screenshots
-- refine spacing and copy after real content is added
-- add deeper case-study detail if needed
+## Documentation
 
-## Notes
+Detailed notes live under `docs/` — see [`docs/README.md`](docs/README.md) for the full index.
 
-This project is meant to evolve in layers:
+---
 
-1. get the structure right
-2. add real content
-3. improve visual identity
-4. add higher-end interactions only where they actually help
+## About this project
+
+Built and iterated entirely through AI-assisted development using **OpenCode** — from initial scaffold through visual design, orbit animation architecture, content migration, and refinement. Every line of code in this repository was written in an OpenCode session.
+
+---
+
+## License
+
+[MIT](./LICENSE) © 2026 Toan Ngo

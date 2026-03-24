@@ -1,20 +1,19 @@
-# Next Steps
+# Roadmap
 
-## Immediate next work
+## Near-term
 
-- swap the `TN` overview placeholder with a real portrait if desired
-- replace the generated-looking project preview blocks with real screenshots
-- refine spacing and copy after real content is in place
-- add favicon and social preview image
+- Replace the `TN` avatar placeholder with a real portrait photo
+- Replace project preview placeholders with real screenshots
+- Add `og:image` and favicon for proper social sharing previews
 
-## Premium upgrades after the lean pass
+## Medium-term
 
-- more advanced section transitions
-- project detail views or case-study pages
-- contact form integration
+- Project detail pages or in-page case-study expandable panels
+- Contact form with a lightweight backend (e.g. Resend / EmailJS)
+- More section transition polish
 
 ## Guardrails
 
-- keep load performance healthy before adding visual effects
-- prefer one strong interaction over many weak ones
-- avoid spreading content across many files unless the portfolio grows enough to justify it
+- Keep bundle size and load performance healthy before adding visual effects
+- Prefer one strong interaction over many weak ones
+- Keep all content in `src/content/portfolio.ts` — avoid scattering copy across components

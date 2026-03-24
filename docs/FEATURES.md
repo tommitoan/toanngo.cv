@@ -1,37 +1,42 @@
 # Features
 
-## Live features
+## Shipped
 
-- reference-inspired dark visual system with purple-blue glow accents
-- responsive one-page portfolio structure
-- premium split-screen hero with an open intro layout and orbit-style motion layer
-- hero showcase is now config-driven, so each orbit can be tuned without editing one large scene file
-- reduced-motion fallback for hero animations
-- staggered motion, circular orbital tracks, interactive planet nodes, and timed hover labels
-- projected HUD-style skill callouts that extend away from the active planet
-- shared orbital center alignment for both rings and moving planets
-- looped idle showcase mode that flickers all skill HUDs on, holds briefly, then fades them back out
-- any in-progress showcase effect is force-hidden immediately when the cursor enters the orbit zone, and the loop only resumes after leaving that zone
-- full-page starfield background layered behind the entire site
-- overview, skills, journey, projects, and contact sections
-- real portfolio content migrated from `tommi-team/me`
-- direct resume download link via `public/ToanNgo-resume.pdf`
+### Layout and structure
+- Responsive single-page application
+- Sticky top navigation with smooth anchor scroll
+- All personal content centralised in `src/content/portfolio.ts`
 
-## Current premium hero details
+### Visual system
+- Dark ink background (`#050816`) with purple-blue glow accents
+- Full-page three-layer twinkling starfield (CSS only, no canvas)
+- Animated space background with astronaut scene
+- Section reveal animations with configurable stagger delays
+- Accent-colored skill chip grid per skill group
 
-- orbit-style visual showcase modeled on the `tommi-team/me` hero reference
-- icon-only center point with circular orbits and persistent planet markers
-- inner and outer orbits are split into reusable layer and node components with a shared cycle hook
-- skill labels stay hidden until hover/focus, then appear briefly as a projected higher-tech HUD panel linked to the live planet position
-- when idle, every skill panel goes through a staged boot-up flicker before reaching full opacity, then fades back out
-- orbit speed, radius, direction, node count, tooltip distance, and showcase placement are configurable from `src/components/hero-showcase/config.ts`
-- restored freer intro composition on the left without the boxed hero shell
-- full-page starfield and blink effect to keep the background from feeling empty
-- no Three.js dependency in the final implementation
+### Hero section
+- Split-screen layout: freeform intro on the left, orbit showcase on the right
+- Two circular orbit rings (inner and outer) with shared center anchor
+- Animated planet nodes orbiting continuously via Framer Motion
+- Hover/focus reveals a projected HUD-style skill label anchored to the live planet position
+- Idle showcase loop: all skill HUDs boot-flicker in, hold, then fade out, then repeat
+- Entering the orbit interaction zone immediately cancels the showcase and hides all HUDs
+- Leaving the orbit zone restarts the idle cycle after a short delay
+- Orbit speed, radius, direction, tooltip distance, and per-node styling all configurable from `src/components/hero-showcase/config.ts`
+- Reduced-motion fallback: layout preserved, continuous orbit animation removed
+
+### Content
+- Real biography, skills, experience, and project data
+- AWS Certified SAA + B.Sc. Computer Science education entries
+- Direct resume download via `public/ToanNgo-resume.pdf`
+- Contact section with email, GitHub, and LinkedIn links
+
+---
 
 ## Remaining upgrades
 
-- replace the `TN` avatar placeholder with a real portrait
-- replace project preview placeholders with real screenshots
-- add deeper project detail views if needed
-- add a contact form backend if desired
+- Replace the `TN` avatar placeholder with a real portrait
+- Replace project preview placeholders with real screenshots
+- Add deeper project detail views or case-study pages
+- Add a contact form backend
+- Add favicon and social preview (`og:image`) metadata

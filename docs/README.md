@@ -1,25 +1,31 @@
 # Docs Index
 
-This folder keeps implementation notes, architecture decisions, and future work out of the project root.
+Implementation notes, architecture decisions, change history, and future work for [toanngo.cv](https://toanngo.cv/).
+
+---
 
 ## Structure
 
-- `architecture/`: stack decisions and project structure notes
-- `changes/`: dated notes about what was implemented
-- `customization/`: focused guides for later visual and behavior tuning
-- `roadmap/`: next iterations after the current milestone
-- `FEATURES.md`: current user-facing feature inventory
-- `IMPLEMENTATION.md`: current technical implementation status
+| Path | Contents |
+|------|----------|
+| `architecture/frontend-spa.md` | Stack rationale and project structure decisions |
+| `changes/` | Dated logs of each implementation milestone |
+| `customization/hero-showcase.md` | Guide for tuning the orbit hero scene |
+| `customization/space-background.md` | Guide for tuning the space/starfield background |
+| `FEATURES.md` | Current user-facing feature inventory |
+| `IMPLEMENTATION.md` | Technical implementation status and file map |
+| `roadmap/next-steps.md` | Planned improvements |
 
-## Current status
+---
 
-- Stack and rationale: `architecture/frontend-spa.md`
-- Initial implementation log: `changes/2026-03-19-lean-spa-v1.md`
-- Visual refresh log: `changes/2026-03-19-reference-style-refresh.md`
-- Content migration log: `changes/2026-03-19-content-migration-from-me.md`
-- Premium hero log: `changes/2026-03-19-premium-hero-motion.md`
-- Hero showcase refactor log: `changes/2026-03-19-hero-showcase-refactor.md`
-- Hero showcase customization guide: `customization/hero-showcase.md`
-- Feature inventory: `FEATURES.md`
-- Implementation status: `IMPLEMENTATION.md`
-- Next improvements: `roadmap/next-steps.md`
+## Change history
+
+| Date | Log |
+|------|-----|
+| 2026-03-19 | Initial lean SPA scaffold — `changes/2026-03-19-lean-spa-v1.md` |
+| 2026-03-19 | Reference-style visual refresh — `changes/2026-03-19-reference-style-refresh.md` |
+| 2026-03-19 | Content migrated from `tommi-team/me` — `changes/2026-03-19-content-migration-from-me.md` |
+| 2026-03-19 | Premium orbit-motion hero added — `changes/2026-03-19-premium-hero-motion.md` |
+| 2026-03-19 | Hero showcase refactored to config-driven components — `changes/2026-03-19-hero-showcase-refactor.md` |
+| 2026-03-20 | Space background astronaut scene — `changes/2026-03-20-background-astronaut-scene.md` |
+| 2026-03-20 | Content and layout cleanup — `changes/2026-03-20-content-layout-cleanup.md` |
