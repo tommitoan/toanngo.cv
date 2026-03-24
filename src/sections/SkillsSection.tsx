@@ -2,24 +2,54 @@ import { Reveal } from "../components/Reveal";
 import { SectionHeading } from "../components/SectionHeading";
 import { portfolio } from "../content/portfolio";
 
-const ACCENT_MAP: Record<string, { border: string; bg: string; glow: string; text: string }> = {
+const ACCENT_MAP: Record<string, { border: string; bg: string; glow: string; text: string; labelBg: string; labelBorder: string }> = {
   violet: {
-    border: "border-violet/30",
-    bg: "bg-violet/8",
-    glow: "hover:shadow-[0_0_20px_rgba(145,94,255,0.25)]",
+    border: "border-violet/40",
+    bg: "bg-violet/20",
+    glow: "hover:shadow-[0_0_20px_rgba(145,94,255,0.35)]",
     text: "text-violet",
+    labelBg: "bg-violet/25",
+    labelBorder: "border-violet/40",
   },
   cyan: {
-    border: "border-cyan-400/30",
-    bg: "bg-cyan-400/8",
-    glow: "hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]",
+    border: "border-cyan-400/40",
+    bg: "bg-cyan-400/20",
+    glow: "hover:shadow-[0_0_20px_rgba(34,211,238,0.35)]",
     text: "text-cyan-400",
+    labelBg: "bg-cyan-400/25",
+    labelBorder: "border-cyan-400/40",
   },
   pink: {
-    border: "border-pink-400/30",
-    bg: "bg-pink-400/8",
-    glow: "hover:shadow-[0_0_20px_rgba(244,114,182,0.25)]",
+    border: "border-pink-400/40",
+    bg: "bg-pink-400/20",
+    glow: "hover:shadow-[0_0_20px_rgba(244,114,182,0.35)]",
     text: "text-pink-400",
+    labelBg: "bg-pink-400/25",
+    labelBorder: "border-pink-400/40",
+  },
+  blue: {
+    border: "border-blue-400/40",
+    bg: "bg-blue-400/20",
+    glow: "hover:shadow-[0_0_20px_rgba(96,165,250,0.35)]",
+    text: "text-blue-400",
+    labelBg: "bg-blue-400/25",
+    labelBorder: "border-blue-400/40",
+  },
+  amber: {
+    border: "border-amber-400/40",
+    bg: "bg-amber-400/20",
+    glow: "hover:shadow-[0_0_20px_rgba(251,191,36,0.35)]",
+    text: "text-amber-400",
+    labelBg: "bg-amber-400/25",
+    labelBorder: "border-amber-400/40",
+  },
+  emerald: {
+    border: "border-emerald-400/40",
+    bg: "bg-emerald-400/20",
+    glow: "hover:shadow-[0_0_20px_rgba(52,211,153,0.35)]",
+    text: "text-emerald-400",
+    labelBg: "bg-emerald-400/25",
+    labelBorder: "border-emerald-400/40",
   },
 };
 
@@ -41,12 +71,10 @@ export function SkillsSection() {
           return (
             <Reveal key={group.title} delay={0.08 * (groupIndex + 1)}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-                {/* Group label */}
                 <h3 className={`shrink-0 text-sm font-semibold uppercase tracking-[0.22em] ${accent.text} sm:w-32 sm:text-right`}>
                   {group.title}
                 </h3>
 
-                {/* Skill chips */}
                 <div className="flex flex-wrap gap-2.5">
                   {group.items.map((item) => (
                     <div

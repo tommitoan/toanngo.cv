@@ -11,52 +11,171 @@ export function ExperienceSection() {
           title={<span className="gradient-text-purple-pink">Journey.</span>}
           description={
             <>
-              From building microservices to architecting{" "}
-              <span className="gradient-text-cyan-blue">cloud-native platforms</span> — each
-              step refined my craft in Go, AWS, and system design.
+              From internship to architecting{" "}
+              <span className="gradient-text-cyan-blue">B2B gaming platforms</span> — four years
+              of Go, cloud infrastructure, and building systems that teams depend on.
             </>
           }
         />
       </Reveal>
 
-      <div className="relative mt-12 space-y-8">
-        <div className="section-divider" />
-        {portfolio.experience.map((item, index) => (
-          <Reveal
-            key={`${item.period}-${item.title}`}
-            className="relative md:grid md:grid-cols-2 md:gap-8"
-            delay={0.08 * (index + 1)}
-          >
-            <div
-              className={`mb-4 flex items-center gap-4 md:mb-0 ${index % 2 === 0 ? "md:justify-end md:pr-10" : "md:order-2 md:pl-10"
-                }`}
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-[#0f1430] text-sm font-semibold text-violet shadow-glow">
-                {item.period}
-              </span>
-              <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
-                Step {index + 1}
-              </p>
-            </div>
+      <div className="mt-12 space-y-8">
+        {portfolio.experience.map((job, jobIndex) => {
+          const isMercury = job.company === "Mercury Studio";
 
-            <article
-              className={`panel rounded-[1.75rem] border-b-2 border-b-slate-200/70 p-6 md:p-7 ${index % 2 === 0 ? "md:ml-10" : "md:mr-10 md:order-1"
+          return (
+            <Reveal key={job.company} delay={0.08 * (jobIndex + 1)}>
+              <div
+                className={`panel rounded-[2rem] overflow-hidden ${
+                  isMercury ? "border-violet/35" : ""
                 }`}
-            >
-              <p className="text-lg font-medium text-slate-300">{item.company}</p>
-              <h3 className="mt-2 text-3xl font-bold leading-tight text-white">{item.title}</h3>
-              <p className="mt-4 text-base leading-7 text-slate-300">{item.summary}</p>
-              <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-300">
-                {item.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </Reveal>
-        ))}
+              >
+                {/* Company header */}
+                <div
+                  className={`flex flex-col gap-3 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-6 ${
+                    isMercury
+                      ? "border-b border-violet/20 bg-gradient-to-r from-violet/10 via-violet/5 to-transparent"
+                      : "border-b border-white/8 bg-white/[0.025]"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-base font-bold text-white ${
+                        isMercury
+                          ? "bg-gradient-to-br from-violet to-blue-500"
+                          : "bg-gradient-to-br from-slate-600 to-slate-700"
+                      }`}
+                      style={
+                        isMercury
+                          ? { boxShadow: "0 4px 16px rgba(145,94,255,0.4)" }
+                          : {}
+                      }
+                    >
+                      {job.company[0]}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2.5">
+                        <h3 className="text-lg font-bold text-white md:text-xl">
+                          {job.company}
+                        </h3>
+                        {isMercury && (
+                          <span className="inline-flex items-center rounded-full border border-violet/35 bg-violet/15 px-2.5 py-0.5 text-xs font-semibold text-violet">
+                            Current
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-0.5 text-sm text-slate-400">{job.location}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-1">
+                    <span className="text-sm font-medium text-slate-300">{job.period}</span>
+                    <span className="text-xs text-slate-500">{job.role.split("—")[0].trim()}</span>
+                  </div>
+                </div>
+
+                {/* Mercury Studio — flat bullets */}
+                {isMercury && job.bullets && (
+                  <div className="px-6 py-6 md:px-8 md:py-7">
+                    <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-violet/80">
+                      {job.role.includes("—") ? job.role.split("—")[1].trim() : job.role}
+                    </p>
+                    <ul className="space-y-4">
+                      {job.bullets.map((bullet, i) => (
+                        <li key={i} className="flex gap-4">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet" />
+                          <span className="text-base leading-7 text-slate-300">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* GTG Software — sub-projects */}
+                {!isMercury && job.subProjects && (
+                  <div className="divide-y divide-white/[0.06]">
+                    {job.subProjects.map((sub, subIndex) => (
+                      <Reveal
+                        key={sub.name}
+                        delay={0.06 * (subIndex + 1)}
+                        className={sub.isInternship ? "opacity-80" : ""}
+                      >
+                        <div
+                          className={`px-6 py-5 md:px-8 md:py-6 ${
+                            sub.isInternship ? "bg-white/[0.012]" : ""
+                          }`}
+                        >
+                          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`h-2 w-2 shrink-0 rounded-full ${
+                                  sub.isInternship
+                                    ? "bg-slate-500"
+                                    : subIndex === 0
+                                    ? "bg-cyan-400"
+                                    : subIndex === 1
+                                    ? "bg-pink-400"
+                                    : "bg-violet"
+                                }`}
+                              />
+                              <h4
+                                className={`font-semibold ${
+                                  sub.isInternship
+                                    ? "text-base text-slate-400"
+                                    : "text-lg text-white"
+                                }`}
+                              >
+                                {sub.name}
+                              </h4>
+                            </div>
+                            <span
+                              className={`shrink-0 text-xs font-medium ${
+                                sub.isInternship ? "text-slate-600" : "text-slate-500"
+                              }`}
+                            >
+                              {sub.period}
+                            </span>
+                          </div>
+
+                          <ul
+                            className={`mt-4 space-y-3 ${
+                              sub.isInternship ? "mt-3 space-y-2" : ""
+                            }`}
+                          >
+                            {sub.bullets.map((bullet, bi) => (
+                              <li key={bi} className="flex gap-4">
+                                <span
+                                  className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${
+                                    sub.isInternship
+                                      ? "bg-slate-600"
+                                      : subIndex === 0
+                                      ? "bg-cyan-400/70"
+                                      : subIndex === 1
+                                      ? "bg-pink-400/70"
+                                      : "bg-violet/70"
+                                  }`}
+                                />
+                                <span
+                                  className={`leading-7 ${
+                                    sub.isInternship
+                                      ? "text-sm text-slate-500"
+                                      : "text-base text-slate-300"
+                                  }`}
+                                >
+                                  {bullet}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

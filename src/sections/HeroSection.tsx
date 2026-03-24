@@ -68,17 +68,20 @@ export function HeroSection() {
             transition={reducedMotion ? undefined : { duration: 0.82, delay: 0.48 }}
             className="mt-9 flex flex-wrap gap-3"
           >
-            {portfolio.hero.ctas.map((cta) => (
-              <a
-                key={cta.label}
-                href={cta.href}
-                target={cta.href.startsWith("http") ? "_blank" : undefined}
-                rel={cta.href.startsWith("http") ? "noreferrer" : undefined}
-                className={cta.variant === "primary" ? "gradient-button" : "ghost-button"}
-              >
-                {cta.label}
-              </a>
-            ))}
+            {portfolio.hero.ctas.map((cta) => {
+              const isExternal = cta.href.startsWith("http") || cta.href.endsWith(".pdf");
+              return (
+                <a
+                  key={cta.label}
+                  href={cta.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                  className={cta.variant === "primary" ? "gradient-button" : "ghost-button"}
+                >
+                  {cta.label}
+                </a>
+              );
+            })}
           </motion.div>
         </Reveal>
 

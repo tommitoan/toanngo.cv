@@ -3,6 +3,7 @@ import { SiteHeader } from "./components/SiteHeader";
 import { StarsBackground } from "./components/StarsBackground";
 import { AboutSection } from "./sections/AboutSection";
 import { ContactSection } from "./sections/ContactSection";
+import { EducationSection } from "./sections/EducationSection";
 import { ExperienceSection } from "./sections/ExperienceSection";
 import { HeroSection } from "./sections/HeroSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
@@ -12,15 +13,12 @@ import { SkillsSection } from "./sections/SkillsSection";
 function App() {
   return (
     <div className="min-h-screen text-slate-100">
-      {/* Background image layer — below the stars */}
-      <div 
+      <div
         className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/bg.png)' }}
       />
-      
-      {/* Stars only — Three.js canvas positions itself as fixed 100vw/100vh */}
-      <StarsBackground />
 
+      <StarsBackground />
 
       <SiteHeader items={portfolio.navigation} />
 
@@ -29,6 +27,7 @@ function App() {
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
+        <EducationSection />
         <ProjectsSection />
         <ContactSection />
       </main>

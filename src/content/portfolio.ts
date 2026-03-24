@@ -25,20 +25,40 @@ type SkillGroup = {
   items: SkillItem[];
 };
 
-type ExperienceItem = {
+export type SubProject = {
+  name: string;
   period: string;
-  title: string;
-  company: string;
-  summary: string;
   bullets: string[];
+  isInternship?: boolean;
 };
 
-type ProjectItem = {
+export type ExperienceItem = {
+  company: string;
+  location: string;
+  period: string;
+  role: string;
+  bullets?: string[];
+  subProjects?: SubProject[];
+};
+
+export type ProjectItem = {
   name: string;
   summary: string;
   impact: string;
   stack: string[];
   href: string;
+  stats?: { label: string; value: string }[];
+  diagram?: string;
+  image?: string;
+  imagePosition?: string;
+};
+
+export type EducationItem = {
+  type: "cert" | "degree";
+  title: string;
+  subtitle: string;
+  date: string;
+  href?: string;
 };
 
 type ContactLink = {
@@ -52,35 +72,39 @@ export const portfolio = {
     { id: "about", label: "Overview" },
     { id: "skills", label: "Skills" },
     { id: "experience", label: "Journey" },
+    { id: "education", label: "Credentials" },
     { id: "projects", label: "Projects" }
   ] satisfies NavigationItem[],
+
   hero: {
     eyebrow: "Software Engineer",
     lead: "Hi, I'm",
     name: "Toan Ngo",
     handle: "@tommitoan",
-    role: "Go Developer and DevOps Engineer building scalable backend systems and cloud-native products.",
+    role: "Go Developer building scalable backend systems and cloud-native products.",
     description:
-      "Based in Ho Chi Minh City, I have over 3 years of experience across Golang, RESTful APIs, AWS infrastructure, microservices architecture, and product-focused system design.",
-    highlights: ["Go and gRPC", "AWS and Kubernetes", "API-first backend"],
+      "4+ years building Go microservices across B2B gaming, CRM, and SaaS — specialising in event-driven architecture, service migration, and shipping internal tooling that compresses workflows from minutes to seconds. AWS Certified Solutions Architect.",
+    highlights: ["Go and gRPC", "AWS Certified", "Kubernetes & GitOps"],
     ctas: [
       { label: "View Projects", href: "#projects", variant: "primary" },
+      { label: "Download Resume", href: "/ToanNgo-resume.pdf", variant: "secondary" },
       { label: "Contact Me", href: "#contact", variant: "secondary" }
     ] satisfies ActionLink[],
     metrics: [
-      { value: "3+", label: "Years Experience" },
-      { value: "6+", label: "Projects Delivered" },
-      { value: "10+", label: "Core Technologies" }
+      { value: "4+", label: "Years Experience" },
+      { value: "120+", label: "Microservices" },
+      { value: "AWS", label: "Certified SAA" }
     ]
   },
+
   about: {
     intro:
-      "I build backend systems that are fast, observable, and maintainable. My current work spans Golang services, microservice architecture, cloud infrastructure, CI/CD, and the product thinking needed to turn technical systems into usable software.",
+      "I build backend systems that are fast, observable, and built to last. My work spans Go microservices, event-driven architecture, cloud infrastructure, CI/CD, and the product thinking needed to turn technical foundations into usable software.",
     points: [
-      "I specialize in high-performance Go services with clean architecture, REST and gRPC APIs, and scalable communication patterns.",
-      "I work comfortably across AWS, Kubernetes, Docker, GitHub Actions, and GitOps workflows to ship and operate cloud-native systems.",
-      "I care about observability, documentation, and secure-by-default foundations so systems stay manageable as they grow.",
-      "I also work across the stack when needed, using React and TypeScript to help deliver complete product experiences."
+      "I specialise in Go microservice architecture across B2B gaming, CRM, and SaaS — including .NET-to-Go service migration, gRPC API design, and event-driven patterns with Kafka and RabbitMQ.",
+      "I work across AWS and GCP with Kubernetes, Docker, Jenkins, ArgoCD, and Helm — designing deployment pipelines and observability stacks (Jaeger, Prometheus, Grafana) that teams can rely on.",
+      "I establish engineering standards and architecture patterns that keep codebases consistent as teams grow — and I build internal tooling that eliminates manual toil.",
+      "I contribute across the stack when needed: React + TypeScript frontends, product alignment with stakeholders, architecture docs, and cross-team API contract coordination."
     ],
     actions: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/tommitoan/", variant: "primary" },
@@ -89,115 +113,203 @@ export const portfolio = {
     principles: [
       {
         title: "Backend Engineering",
-        description: "Golang, clean architecture, API-first design, and scalable service boundaries are the core of my work."
+        description:
+          "Go microservices, gRPC, event-driven systems, and clean architecture form the core of my work. I care about correctness, observability, and maintainability at every layer."
       },
       {
-        title: "Cloud and Delivery",
-        description: "I design deployment flows with Kubernetes, GitOps, CI/CD, and infrastructure practices that keep releases reliable."
+        title: "Cloud & Delivery",
+        description:
+          "AWS, GCP, Kubernetes, and GitOps workflows that make releases reliable and operations boring — in the best possible way."
       },
       {
-        title: "Product Mindset",
-        description: "I aim for systems that are technically robust and still aligned with user needs, business goals, and team velocity."
+        title: "Engineering Standards",
+        description:
+          "I establish coding conventions, architecture patterns, and internal tooling so teams ship faster and systems stay consistent as they scale."
       }
     ] satisfies Principle[]
   },
+
   skills: [
     {
-      title: "Backend & API",
+      title: "Languages",
       accent: "violet",
       items: [
         { name: "Go", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" },
-        { name: "gRPC", icon: "https://cdn.simpleicons.org/google/white" },
-        { name: "REST APIs", icon: "https://cdn.simpleicons.org/fastapi/white" },
-        { name: "OpenAPI", icon: "https://cdn.simpleicons.org/openapiinitiative/white" },
-        { name: "Clean Arch" }
+        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
+        { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+        { name: "SQL" }
       ]
     },
     {
-      title: "Cloud & DevOps",
+      title: "Backend & API",
       accent: "cyan",
       items: [
-        { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-        { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
-        { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
-        { name: "Argo CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg" },
-        { name: "Actions", icon: "https://cdn.simpleicons.org/githubactions/white" }
+        { name: "gRPC", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grpc/grpc-plain.svg" },
+        { name: "Protobuf" },
+        { name: "gRPC-Gateway" },
+        { name: "REST" },
+        { name: "Kafka", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" },
+        { name: "RabbitMQ", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg" },
+        { name: "JWT" },
+        { name: "OAuth2" }
       ]
     },
     {
-      title: "Platform & Data",
+      title: "Databases",
       accent: "pink",
       items: [
         { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
         { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" },
-        { name: "OpenTelemetry", icon: "https://cdn.simpleicons.org/opentelemetry/white" },
-        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" }
+        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+        { name: "ArangoDB", icon: "https://cdn.simpleicons.org/arangodb/white" }
+      ]
+    },
+    {
+      title: "Cloud & Infra",
+      accent: "blue",
+      items: [
+        { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+        { name: "GCP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" },
+        { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
+        { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" }
+      ]
+    },
+    {
+      title: "CI/CD & Obs.",
+      accent: "amber",
+      items: [
+        { name: "Jenkins", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" },
+        { name: "Argo CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg" },
+        { name: "GitHub Actions", icon: "https://cdn.simpleicons.org/githubactions/white" },
+        { name: "Helm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/helm/helm-original.svg" },
+        { name: "Jaeger" },
+        { name: "Prometheus", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original.svg" }
+      ]
+    },
+    {
+      title: "AI Tools",
+      accent: "emerald",
+      items: [
+        { name: "GitHub Copilot", icon: "https://cdn.simpleicons.org/githubcopilot/white" },
+        { name: "OpenCode" },
+        { name: "ChatGPT" },
+        { name: "Claude", icon: "https://cdn.simpleicons.org/claude/white" }
       ]
     }
   ] satisfies SkillGroup[],
+
   experience: [
     {
-      period: "Now",
-      title: "Software Engineer, GTG CRM",
-      company: "GTG Software",
-      summary: "Built GTG CRM from the ground up as a scalable Vietnam-focused CRM platform, leading major parts of its omni-channel messaging and architecture foundation.",
+      company: "Mercury Studio",
+      location: "HCMC, Vietnam",
+      period: "Jun 2025 — Present",
+      role: "Software Engineer — Slotty (B2B gaming backend, 120+ Go microservices)",
       bullets: [
-        "Designed and developed the core omni-channel messaging service across contact, marketing, sales, and support flows",
-        "Implemented OAuth2 identity management with Keycloak and WebSocket support for real-time chat",
-        "Established microservices architecture with gRPC, REST gateways, CI/CD, and observability on AWS"
+        "Migrated .NET/C# backend services to idiomatic Go across Edge, Integration, and Core layers; scaffolded new services where no Go counterpart existed; coordinated API contracts and gRPC-Gateway routing changes with the frontend team.",
+        "Delivered full CRUD for a 3-tier person hierarchy (agents, players, sub-accounts) — create, update, suspend/disable, delete — with strict 1-level downline permission checks enforced across integration/agent, integration/sub_account, and integration/supporter.",
+        "Implemented structured audit logging via core/audit covering all write operations, giving operators a complete, queryable trail of every downline action.",
+        "Instrumented migrated services with Jaeger end-to-end tracing and Redis Cluster caching with a structured key naming convention, cutting repeated downstream gRPC calls on hot read paths.",
+        "Maintained Jenkins CI/CD pipelines with parallel Docker builds and GitOps deployment via ArgoCD + Helm across dev, staging, and production environments.",
+        "Built MyTools, an internal Go + React developer dashboard replacing manual DB/Redis queries for person lookup, API diffing, and cache cloning — compressing a ~5-minute workflow to ~5 seconds, adopted by the whole team."
       ]
     },
     {
-      period: "2023",
-      title: "Software Engineer, Tokeet",
       company: "GTG Software",
-      summary: "Rebuilt Tokeet's messaging platform in Golang, replacing a Perl-based system to improve performance, scalability, and maintainability.",
-      bullets: [
-        "Built the system from scratch with multi-channel messaging, centralized conversations, and OAuth2 integrations",
-        "Used Amazon SQS and cloud APIs for parallel communication and efficient message processing",
-        "Deployed on AWS and produced documentation so non-technical managers could operate the system"
-      ]
-    },
-    {
-      period: "2023",
-      title: "Software Engineer, Trydome",
-      company: "GTG Software",
-      summary: "Improved a cloud database platform by optimizing data flows, integrating billing, and designing GitOps-driven CI/CD capabilities.",
-      bullets: [
-        "Optimized critical queries and cleaned production data to improve system responsiveness and reporting quality",
-        "Designed FluxCD-based CI/CD initiatives so customers could manage databases through the platform",
-        "Implemented Stripe-integrated REST APIs for invoice collection and payment automation"
+      location: "HCMC, Vietnam",
+      period: "Jan 2022 — Mar 2025",
+      role: "Software Engineer",
+      subProjects: [
+        {
+          name: "GTG CRM",
+          period: "Feb 2024 — Mar 2025",
+          bullets: [
+            "Architected the real-time messaging core of a HubSpot-alternative CRM from scratch using Go, gRPC, and WebSocket with OAuth2 (Keycloak); deployed to AWS EKS via GitHub Actions + ArgoCD with full observability (VictoriaMetrics, Loki, Jaeger).",
+            "Designed the omni-channel messaging service as the platform's core feature, integrating across contact management, marketing, sales, and service hubs for a competitive launch.",
+            "Established team-wide coding standards and architecture patterns for the microservice layer.",
+            "Participated in Figma design reviews and aligned technical decisions with the CEO; documented architecture and workflows in Confluence to onboard new engineers."
+          ]
+        },
+        {
+          name: "Tokeet",
+          period: "Jun 2023 — Feb 2024",
+          bullets: [
+            "Re-wrote a legacy Perl messaging system in Go; introduced multi-channel conversation tracking, OAuth2 cloud integrations, and Amazon SQS fan-out for parallel processing.",
+            "Built centralised conversation tracking with Go design patterns for maintainability; wrote deployment docs enabling non-technical project managers to manage the app on AWS."
+          ]
+        },
+        {
+          name: "Trydome",
+          period: "Jun 2022 — Jun 2023",
+          bullets: [
+            "Optimised critical PostgreSQL queries, integrated Stripe billing via REST API, and designed a FluxCD GitOps pipeline automating cloud database deployment for end customers.",
+            "Cleaned and validated legacy customer data to improve reporting accuracy and overall data reliability across the platform.",
+            "Collaborated on REST API design and infrastructure provisioning across AWS and GCP using FluxCD-based GitOps for automated customer database configuration management."
+          ]
+        },
+        {
+          name: "Internship",
+          period: "Jan 2022 — Jun 2022",
+          isInternship: true,
+          bullets: [
+            "Built and maintained Go microservices with PostgreSQL for business workflows — data modelling, CRUD, input validation, and endpoint integration; implemented Kafka-based async processing with an idempotency mechanism to prevent duplicate consumption."
+          ]
+        }
       ]
     }
   ] satisfies ExperienceItem[],
+
   projects: [
     {
-      name: "gRPC Testing Framework",
-      summary: "Reusable integration testing framework for gRPC services with advanced mocking patterns and structured test data management.",
-      impact: "Improved test reliability across service boundaries and helped drive 90 percent plus coverage across microservice workflows.",
-      stack: ["Go", "gRPC", "testify", "gomock", "Protocol Buffers"],
-      href: "https://github.com/tommitoan"
+      name: "bazica",
+      summary:
+        "Open-source Go library that converts Solar Calendar dates to Ba-zi charts (Chinese Four Pillars of Destiny astrology) — year, month, day, and hour pillars with Heavenly Stems and Earthly Branches.",
+      impact:
+        "Published and actively maintained across 36 releases. 23 stars and 13 forks from the community. Live demo at bazica-web.tommitoan.com.",
+      stack: ["Go", "MIT License", "pkg.go.dev"],
+      href: "https://github.com/tommitoan/bazica",
+      image: "/bazica-screen.png",
+      imagePosition: "50% 30%",
+      stats: [
+        { label: "Stars", value: "23" },
+        { label: "Forks", value: "13" },
+        { label: "Releases", value: "36" }
+      ]
     },
     {
-      name: "OpenAPI-First Backend Service",
-      summary: "Contract-first backend service with OpenAPI specifications, generated server and client code, and robust validation middleware.",
-      impact: "Made API delivery more predictable by aligning implementation, documentation, and validation around one source of truth.",
-      stack: ["Go", "OpenAPI", "oapi-codegen", "Chi Router", "PostgreSQL"],
-      href: "https://github.com/tommitoan"
-    },
-    {
-      name: "Kubernetes GitOps Platform",
-      summary: "End-to-end GitOps platform using Argo CD, Helm, and GitHub Actions for automated deployment into a k3s cluster.",
-      impact: "Standardized deployment flow for multiple services and reduced operational friction by turning release steps into repeatable automation.",
-      stack: ["Kubernetes", "k3s", "Argo CD", "Helm", "GitHub Actions"],
-      href: "https://github.com/tommitoan"
+      name: "Fedora k3s GitOps Homelab",
+      summary:
+        "Personal Fedora server running a 3-node k3s cluster with full GitOps via Argo CD — hosting Go microservices, self-hosted apps, and a complete observability stack exposed securely via Cloudflared tunnel.",
+      impact:
+        "Commit → GitHub Actions → Argo CD Sync → k3s Deploy → Health Checks → Live. Prometheus + Grafana + Jaeger + Loki + Alertmanager with Redis Cluster Operator and MinIO storage.",
+      stack: ["k3s", "Argo CD", "Helm", "GitHub Actions", "Prometheus", "Grafana", "Jaeger", "Redis Cluster", "Nginx Ingress", "Cloudflared"],
+      href: "",
+      diagram: "/homelab-diagram.png",
+      imagePosition: "50% 15%"
     }
   ] satisfies ProjectItem[],
+
+  education: [
+    {
+      type: "cert",
+      title: "AWS Certified Solutions Architect",
+      subtitle: "Associate — Amazon Web Services",
+      date: "April 2025",
+      href: "https://www.credly.com/badges/932311b1-53f9-4537-af83-b93a64a3261b"
+    },
+    {
+      type: "degree",
+      title: "B.Sc. Computer Science",
+      subtitle: "Ton Duc Thang University",
+      date: "2021"
+    }
+  ] satisfies EducationItem[],
+
+  educationLanguages: "English  B1+  ·  Vietnamese  Native",
+
   contact: {
     heading: "Let's build something reliable",
     description:
-      "I am based in Ho Chi Minh City and focused on backend engineering, cloud infrastructure, and product-oriented system design. If you want to discuss a role or a project, these are the fastest ways to reach me.",
+      "Based in Ho Chi Minh City, focused on backend engineering, cloud infrastructure, and product-oriented system design. If you want to discuss a role or a project, these are the fastest ways to reach me.",
     links: [
       {
         label: "Email",
@@ -216,8 +328,9 @@ export const portfolio = {
       }
     ] satisfies ContactLink[]
   },
+
   footer: {
-    note: "Toan Ngo, software engineer focused on Go, cloud infrastructure, and scalable backend systems.",
+    note: "Toan Ngo — Software Engineer focused on Go, cloud infrastructure, and scalable backend systems.",
     meta: "Ho Chi Minh City, Vietnam"
   }
 };
